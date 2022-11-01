@@ -1,5 +1,5 @@
 import greenfoot.*; 
-public class TempActor extends Actor
+public class Astronaut extends Actor
 {
     public void act() 
     {  

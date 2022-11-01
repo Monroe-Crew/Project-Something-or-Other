@@ -1,17 +1,3 @@
-Astrorunners.class
-Astrorunners.ctxt
-
-Controls.class
-Controls.ctxt
-
-End_Game_Winner.class
-End_Game_Winner.ctxt
-
-Game_Select.class
-Game_Select.ctxt
-
-Round_End.class
-Round_End.ctxt
-
-Title.class
-Title.ctxt
+# ignored filetypes
+*.class
+*.ctxt
