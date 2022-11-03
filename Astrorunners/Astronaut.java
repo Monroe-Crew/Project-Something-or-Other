@@ -25,18 +25,15 @@ public class Astronaut extends Actor{
             double Distance = Math.sqrt(Math.pow(xDif,2)+Math.pow(yDif,2));
             turnTowards(bx, by);
             int rotation = getRotation();
-            setRotation(0);
-            velocityX += 25*(Math.cos(Math.toRadians(rotation)) / Distance);
-            velocityY += 25*(Math.sin(Math.toRadians(rotation)) / Distance);
+            setRotation(getRotation()-90);
+           
+            //setRotation(0);
+            velocityX += 32*(Math.cos(Math.toRadians(rotation)) / Distance);
+            velocityY += 32*(Math.sin(Math.toRadians(rotation)) / Distance);
             if(velocityX>10){velocityX=10;}
             if(velocityY>10){velocityY=10;}
             if(velocityX<-10){velocityX=-10;}
             if(velocityY<-10){velocityY=-10;}
-            //velocityX = 10*(xDif / Distance);
-            //velocityY = 10*(yDif / Distance);
-
-            //velocityX=Math.cos(Math.toRadians(rotation));
-            //velocityY=Math.sin(Math.toRadians(rotation));
             System.out.println("Distance: " + Distance);
             System.out.println("Rotation: " + rotation);
             System.out.println("velocityX: " + velocityX);
@@ -63,13 +60,5 @@ public class Astronaut extends Actor{
             velocityX+=.1;
         }
         setLocation((int)Math.round(x), (int)Math.round(y));
-    }
-
-    public double gravityAcceleration(double gravity, double velocity){
-        return velocity + gravity;
-    }
-
-    public void gravity(double velocity){
-        setLocation(getX(), getY() + (int)velocity);
     }
 }
