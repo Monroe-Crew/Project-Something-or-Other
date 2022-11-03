@@ -1,9 +1,11 @@
 #BlueJ class context
 comment0.target=TempActor
 comment1.params=
-comment1.target=int\ getXCord()
+comment1.target=TempActor()
 comment2.params=
-comment2.target=void\ SetXCord()
+comment2.target=void\ act()
 comment3.params=
-comment3.target=void\ act()
-numComments=4
+comment3.target=boolean\ onGroundCheck()
+comment4.params=
+comment4.target=void\ collisions()
+numComments=5
