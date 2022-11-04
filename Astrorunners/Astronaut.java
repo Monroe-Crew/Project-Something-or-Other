@@ -34,12 +34,12 @@ public class Astronaut extends Actor{
             if(velocityY>10){velocityY=10;}
             if(velocityX<-10){velocityX=-10;}
             if(velocityY<-10){velocityY=-10;}
-            System.out.println("Distance: " + Distance);
-            System.out.println("Rotation: " + rotation);
-            System.out.println("velocityX: " + velocityX);
-            System.out.println("velocityY: " + velocityY);
-            System.out.println("xDif: " + xDif);
-            System.out.println("yDif: " + yDif);
+            //System.out.println("Distance: " + Distance);
+            //System.out.println("Rotation: " + rotation);
+            //System.out.println("velocityX: " + velocityX);
+            //System.out.println("velocityY: " + velocityY);
+            //System.out.println("xDif: " + xDif);
+            //System.out.println("yDif: " + yDif);
             if(Distance<15){
                 velocityX = 0;
                 velocityY = 0;
