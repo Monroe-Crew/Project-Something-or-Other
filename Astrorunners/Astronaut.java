@@ -4,9 +4,12 @@ import java.lang.Math;
 public class Astronaut extends Actor{
     private double velocityX, velocityY;
     private double x, y;
+    private int score;
+    
     public Astronaut(){
         this.velocityX = 0;
         this.velocityY = 0;
+        this.score = 0;
     }
 
     public void addedToWorld(World world) {
