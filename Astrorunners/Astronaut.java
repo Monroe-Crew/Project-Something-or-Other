@@ -5,12 +5,16 @@ public class Astronaut extends Actor{
     private double velocityX, velocityY;
     private double x, y;
     private int rotation = 0;
+    Thingy thingyBL = new Thingy("BL");
+    Thingy thingyBR = new Thingy("BR");
     public Astronaut(){
         this.velocityX = 0;
         this.velocityY = 0;
     }
 
     public void addedToWorld(World world) {
+        getWorld().addObject(thingyBL,0,0);
+        getWorld().addObject(thingyBR,0,0);
         x = getX();
         y = getY();
     }
@@ -67,8 +71,10 @@ public class Astronaut extends Actor{
     public void collisions() {
         int w = getImage().getWidth();
         int h = getImage().getHeight();
-        double[] BLA = pointRotation(x,y,-w/4,h/2);
+        double[] BLA = pointRotation(x,y,x-w/4,y+h/2);
         Actor BL = getOneObjectAtOffset((int)BLA[0],(int)BLA[1], Platforms.class);
+        
+        thingyBL.setLocation((int)BLA[0],(int)BLA[1]);
         if(BL != null) {
             int ow = BL.getImage().getWidth();
             int oh = BL.getImage().getHeight();
@@ -78,8 +84,9 @@ public class Astronaut extends Actor{
             velocityY = 0;
             System.out.println("BL");
         }
-        double[] BRA = pointRotation(x,y,w/4,h/2);
+        double[] BRA = pointRotation(x,y,x+w/4,y+h/2);
         Actor BR = getOneObjectAtOffset((int)BRA[0],(int)BRA[1], Platforms.class);
+        thingyBR.setLocation((int)BRA[0],(int)BRA[1]);
         if(BR != null){
             int ow = BR.getImage().getWidth();
             int oh = BR.getImage().getHeight();
@@ -89,7 +96,7 @@ public class Astronaut extends Actor{
             velocityY = 0;
             System.out.println("BR");
         }
-        double[] TLA = pointRotation(x,y,-w/4,-h/2);
+        double[] TLA = pointRotation(x,y,x-w/4,y-h/2);
         Actor TL = getOneObjectAtOffset((int)TLA[0],(int)TLA[1], Platforms.class);
         if(TL != null){
             int ow = TL.getImage().getWidth();
@@ -98,8 +105,9 @@ public class Astronaut extends Actor{
             y = TL.getY()-oh/2-h/2;
             setLocation((int)Math.round(x),(int)Math.round(y));
             velocityY = 0;
+            System.out.println("TL");
         }
-        double[] TRA = pointRotation(x,y,w/4,-h/2);
+        double[] TRA = pointRotation(x,y,x+w/4,y-h/2);
         Actor TR = getOneObjectAtOffset((int)TRA[0],(int)TRA[1], Platforms.class);
         if(TR != null){
             int ow = TR.getImage().getWidth();
@@ -108,8 +116,9 @@ public class Astronaut extends Actor{
             y = TR.getY()-oh/2-h/2;
             setLocation((int)Math.round(x),(int)Math.round(y));
             velocityY = 0;
+            System.out.println("TR");
         }
-        double[] LTA = pointRotation(x,y,-w/4,-h/2);
+        double[] LTA = pointRotation(x,y,x-w/4,y-h/2);
         Actor LT = getOneObjectAtOffset((int)LTA[0],(int)LTA[1], Platforms.class);
         if(LT != null){
             int ow = LT.getImage().getWidth();
@@ -118,8 +127,9 @@ public class Astronaut extends Actor{
             y = y;
             setLocation((int)Math.round(x),(int)Math.round(y));
             velocityX = 0;
+            System.out.println("LT");
         }
-        double[] LBA = pointRotation(x,y,-w/4,h/2);
+        double[] LBA = pointRotation(x,y,x-w/4,y+h/2);
         Actor LB = getOneObjectAtOffset((int)LBA[0],(int)LBA[1], Platforms.class);
         if(LB != null){
             int ow = LB.getImage().getWidth();
@@ -128,8 +138,9 @@ public class Astronaut extends Actor{
             y = y;
             setLocation((int)Math.round(x),(int)Math.round(y));
             velocityX = 0;
+            System.out.println("LB");
         }
-        double[] RTA = pointRotation(x,y,w/4,-h/2);
+        double[] RTA = pointRotation(x,y,x+w/4,y-h/2);
         Actor RT = getOneObjectAtOffset((int)RTA[0],(int)RTA[1], Platforms.class);
         if(RT != null){
             int ow = RT.getImage().getWidth();
@@ -138,8 +149,9 @@ public class Astronaut extends Actor{
             y = y;
             setLocation((int)Math.round(x),(int)Math.round(y));
             velocityX = 0;
+            System.out.println("RT");
         }
-        double[] RBA = pointRotation(x,y,w/4,h/2);
+        double[] RBA = pointRotation(x,y,x+w/4,y+h/2);
         Actor RB = getOneObjectAtOffset((int)RBA[0],(int)RBA[1], Platforms.class);
         if(RB != null){
             int ow = RB.getImage().getWidth();
@@ -148,14 +160,17 @@ public class Astronaut extends Actor{
             y = y;
             setLocation((int)Math.round(x),(int)Math.round(y));
             velocityX = 0;
+            System.out.println("RB");
         }
     }
     private double[] pointRotation(double pivotX, double pivotY, double pointX, double pointY){
+        System.out.println("pointRotation: "+pivotX+" "+pivotY+" "+pointX+" "+pointY);
         double[] newPoint = new double[2];
         newPoint[0] = Math.cos(Math.toRadians(rotation)) * (pointX-pivotX) -
                       Math.sin(Math.toRadians(rotation)) * (pointY-pivotY) + pivotX;
         newPoint[1] = Math.sin(Math.toRadians(rotation)) * (pointX-pivotX) +
                       Math.cos(Math.toRadians(rotation)) * (pointY-pivotY) + pivotY;
+        System.out.println("pointRotation returning: "+newPoint[0]+" "+newPoint[1]);
         return newPoint;
     }
 }
