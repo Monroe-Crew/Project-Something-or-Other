@@ -1,12 +1,40 @@
-import greenfoot.*; 
-public class TempActor extends Actor
+import greenfoot.*;
+import java.util.List; 
+import java.util.ArrayList;
+public class Astronaut extends Actor
 {
     private boolean grounded, wHeld;
     private int xSpeed, ySpeed, xSpeedMax, ySpeedMax, frame;
-    public TempActor() {
-        xSpeedMax = 10;
-        ySpeedMax = 20;
+    private int score;
+    private List<String> controls = new ArrayList<String>();
+    
+    public Astronaut(int playerID) {
+        this.xSpeedMax = 10;
+        this.ySpeedMax = 20;
+        this.score = 0;
+        
+        if(playerID == 1){
+            controls.add("W");
+            controls.add("A");
+            controls.add("D");
+        }
+        else if(playerID == 2){
+            controls.add("I");
+            controls.add("J");
+            controls.add("L");
+        }
+        else if(playerID == 3){
+            controls.add("S");
+            controls.add("Z");
+            controls.add("C");
+        }
+        else if(playerID == 4){
+            controls.add("K");
+            controls.add("M");
+            controls.add(".");
+        }
     }
+    
 
     public void act() 
     {
@@ -16,18 +44,18 @@ public class TempActor extends Actor
         // APPLY GRAVITY
         ySpeed++;
         // CHECK KEY PRESSES
-        if(Greenfoot.isKeyDown("W") && grounded){
+        if(Greenfoot.isKeyDown(controls.get(0)) && grounded){
             ySpeed = -20;
             wHeld = true;
         }
         // RELEASE JUMP
-        if(!Greenfoot.isKeyDown("W") && wHeld && ySpeed < 0) {
+        if(!Greenfoot.isKeyDown(controls.get(0)) && wHeld && ySpeed < 0) {
             ySpeed = ySpeed / 2;
             wHeld = false;
         }
         // RUN LEFT/RIGHT
-        if(Greenfoot.isKeyDown("D")){xSpeed++;}
-        if(Greenfoot.isKeyDown("A")){xSpeed--;}
+        if(Greenfoot.isKeyDown(controls.get(2))){xSpeed++;}
+        if(Greenfoot.isKeyDown(controls.get(1))){xSpeed--;}
         // APPLY FRICTION
         if(frame % 2 == 0) {
             if(xSpeed > 0) {xSpeed--;}
