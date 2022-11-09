@@ -2,7 +2,7 @@
 class.TempActor.image=man01.png
 class.TempMovingPlatform.image=TempPlatform.png
 class.TempNonMovingPlatform.image=TempPlatform.png
-class.TempWorld.image=download.jpg
+class.TempWorld.image=bathroom-tile.jpg
 dependency1.from=TempWorld
 dependency1.to=TempNonMovingPlatform
 dependency1.type=UsesDependency
