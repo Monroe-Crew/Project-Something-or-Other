@@ -21,6 +21,12 @@ public class Astronaut extends Actor{
     public void addedToWorld(World world) {
         getWorld().addObject(thingyBL,0,0);
         getWorld().addObject(thingyBR,0,0);
+        getWorld().addObject(thingyTL,0,0);
+        getWorld().addObject(thingyTR,0,0);
+        getWorld().addObject(thingyLT,0,0);
+        getWorld().addObject(thingyLB,0,0);
+        getWorld().addObject(thingyRT,0,0);
+        getWorld().addObject(thingyRB,0,0);
         x = getX();
         y = getY();
     }
@@ -39,8 +45,8 @@ public class Astronaut extends Actor{
             setRotation(getRotation()-90);
 
             //setRotation(0);
-            velocityX += 32*(Math.cos(Math.toRadians(rotation)) / Distance);
-            velocityY += 32*(Math.sin(Math.toRadians(rotation)) / Distance);
+            velocityX += 50*(Math.cos(Math.toRadians(rotation)) / Distance);
+            velocityY += 50*(Math.sin(Math.toRadians(rotation)) / Distance);
             if(velocityX>10){velocityX=10;}
             if(velocityY>10){velocityY=10;}
             if(velocityX<-10){velocityX=-10;}
@@ -125,7 +131,7 @@ public class Astronaut extends Actor{
             velocityY = 0;
             System.out.println("TR");
         }
-        double[] LTA = pointRotation(x,y,x-w/4,y-h/2);
+        double[] LTA = pointRotation(x,y,x-w/2,y-h/4);
         Actor LT = getOneObjectAtOffset((int)LTA[0],(int)LTA[1], Platforms.class);
         thingyLT.setLocation((int)LTA[0],(int)LTA[1]);
         if(LT != null){
@@ -137,7 +143,7 @@ public class Astronaut extends Actor{
             velocityX = 0;
             System.out.println("LT");
         }
-        double[] LBA = pointRotation(x,y,x-w/4,y+h/2);
+        double[] LBA = pointRotation(x,y,x-w/2,y+h/4);
         Actor LB = getOneObjectAtOffset((int)LBA[0],(int)LBA[1], Platforms.class);
         thingyLB.setLocation((int)LBA[0],(int)LBA[1]);
         if(LB != null){
@@ -149,7 +155,7 @@ public class Astronaut extends Actor{
             velocityX = 0;
             System.out.println("LB");
         }
-        double[] RTA = pointRotation(x,y,x+w/4,y-h/2);
+        double[] RTA = pointRotation(x,y,x+w/2,y-h/4);
         Actor RT = getOneObjectAtOffset((int)RTA[0],(int)RTA[1], Platforms.class);
         thingyRT.setLocation((int)RTA[0],(int)RTA[1]);
         if(RT != null){
@@ -161,7 +167,7 @@ public class Astronaut extends Actor{
             velocityX = 0;
             System.out.println("RT");
         }
-        double[] RBA = pointRotation(x,y,x+w/4,y+h/2);
+        double[] RBA = pointRotation(x,y,x+w/2,y+h/4);
         Actor RB = getOneObjectAtOffset((int)RBA[0],(int)RBA[1], Platforms.class);
         thingyRB.setLocation((int)RBA[0],(int)RBA[1]);
         if(RB != null){
@@ -175,13 +181,13 @@ public class Astronaut extends Actor{
         }
     }
     private double[] pointRotation(double pivotX, double pivotY, double pointX, double pointY){
-        System.out.println("pointRotation: "+pivotX+" "+pivotY+" "+pointX+" "+pointY);
+        //System.out.println("pointRotation: "+pivotX+" "+pivotY+" "+pointX+" "+pointY);
         double[] newPoint = new double[2];
-        newPoint[0] = Math.cos(Math.toRadians(rotation)) * (pointX-pivotX) -
-                      Math.sin(Math.toRadians(rotation)) * (pointY-pivotY) + pivotX;
-        newPoint[1] = Math.sin(Math.toRadians(rotation)) * (pointX-pivotX) +
-                      Math.cos(Math.toRadians(rotation)) * (pointY-pivotY) + pivotY;
-        System.out.println("pointRotation returning: "+newPoint[0]+" "+newPoint[1]);
+        newPoint[0] = Math.cos(Math.toRadians(rotation-90)) * (pointX-pivotX) -
+                      Math.sin(Math.toRadians(rotation-90)) * (pointY-pivotY) + pivotX;
+        newPoint[1] = Math.sin(Math.toRadians(rotation-90)) * (pointX-pivotX) +
+                      Math.cos(Math.toRadians(rotation-90)) * (pointY-pivotY) + pivotY;
+        //System.out.println("pointRotation returning: "+newPoint[0]+" "+newPoint[1]);
         return newPoint;
     }
 }
