@@ -7,6 +7,12 @@ public class Astronaut extends Actor{
     private int rotation = 0;
     Thingy thingyBL = new Thingy("BL");
     Thingy thingyBR = new Thingy("BR");
+    Thingy thingyTL = new Thingy("TL");
+    Thingy thingyTR = new Thingy("TR");
+    Thingy thingyLT = new Thingy("LT");
+    Thingy thingyLB = new Thingy("LB");
+    Thingy thingyRT = new Thingy("RT");
+    Thingy thingyRB = new Thingy("RB");
     public Astronaut(){
         this.velocityX = 0;
         this.velocityY = 0;
@@ -73,7 +79,6 @@ public class Astronaut extends Actor{
         int h = getImage().getHeight();
         double[] BLA = pointRotation(x,y,x-w/4,y+h/2);
         Actor BL = getOneObjectAtOffset((int)BLA[0],(int)BLA[1], Platforms.class);
-        
         thingyBL.setLocation((int)BLA[0],(int)BLA[1]);
         if(BL != null) {
             int ow = BL.getImage().getWidth();
@@ -98,6 +103,7 @@ public class Astronaut extends Actor{
         }
         double[] TLA = pointRotation(x,y,x-w/4,y-h/2);
         Actor TL = getOneObjectAtOffset((int)TLA[0],(int)TLA[1], Platforms.class);
+        thingyTL.setLocation((int)TLA[0],(int)TLA[1]);
         if(TL != null){
             int ow = TL.getImage().getWidth();
             int oh = TL.getImage().getHeight();
@@ -109,6 +115,7 @@ public class Astronaut extends Actor{
         }
         double[] TRA = pointRotation(x,y,x+w/4,y-h/2);
         Actor TR = getOneObjectAtOffset((int)TRA[0],(int)TRA[1], Platforms.class);
+        thingyTR.setLocation((int)TRA[0],(int)TRA[1]);
         if(TR != null){
             int ow = TR.getImage().getWidth();
             int oh = TR.getImage().getHeight();
@@ -120,6 +127,7 @@ public class Astronaut extends Actor{
         }
         double[] LTA = pointRotation(x,y,x-w/4,y-h/2);
         Actor LT = getOneObjectAtOffset((int)LTA[0],(int)LTA[1], Platforms.class);
+        thingyLT.setLocation((int)LTA[0],(int)LTA[1]);
         if(LT != null){
             int ow = LT.getImage().getWidth();
             int oh = LT.getImage().getHeight();
@@ -131,6 +139,7 @@ public class Astronaut extends Actor{
         }
         double[] LBA = pointRotation(x,y,x-w/4,y+h/2);
         Actor LB = getOneObjectAtOffset((int)LBA[0],(int)LBA[1], Platforms.class);
+        thingyLB.setLocation((int)LBA[0],(int)LBA[1]);
         if(LB != null){
             int ow = LB.getImage().getWidth();
             int oh = LB.getImage().getHeight();
@@ -142,6 +151,7 @@ public class Astronaut extends Actor{
         }
         double[] RTA = pointRotation(x,y,x+w/4,y-h/2);
         Actor RT = getOneObjectAtOffset((int)RTA[0],(int)RTA[1], Platforms.class);
+        thingyRT.setLocation((int)RTA[0],(int)RTA[1]);
         if(RT != null){
             int ow = RT.getImage().getWidth();
             int oh = RT.getImage().getHeight();
@@ -153,6 +163,7 @@ public class Astronaut extends Actor{
         }
         double[] RBA = pointRotation(x,y,x+w/4,y+h/2);
         Actor RB = getOneObjectAtOffset((int)RBA[0],(int)RBA[1], Platforms.class);
+        thingyRB.setLocation((int)RBA[0],(int)RBA[1]);
         if(RB != null){
             int ow = RB.getImage().getWidth();
             int oh = RB.getImage().getHeight();
