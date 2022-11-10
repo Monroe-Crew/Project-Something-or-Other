@@ -13,5 +13,5 @@ public class Platforms extends Actor
             int rotation = getRotation();
             setRotation(getRotation()-90);
         }
-    }    
+    }
 }
