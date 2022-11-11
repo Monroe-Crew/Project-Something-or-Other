@@ -1,14 +1,13 @@
 import greenfoot.*;
 import java.util.List; 
 import java.util.ArrayList;
-public class Astronaut extends Actor
-{
+public class Astronaut extends Actor{
     private boolean grounded, wHeld;
     private int xSpeed, ySpeed, xSpeedMax, ySpeedMax, frame;
     private int score;
     private String[] controls;
     
-    public Astronaut(int playerID) {
+    public Astronaut(int playerID){
         this.xSpeedMax = 10;
         this.ySpeedMax = 20;
         this.score = 0;
@@ -27,9 +26,8 @@ public class Astronaut extends Actor
         }
     }
     
-
-    public void act() 
-    {
+    //do you want me to kill myself be honest
+    public void act(){
         frame++;
         // ARE WE GROUNDED?
         grounded = onGroundCheck();
@@ -64,7 +62,7 @@ public class Astronaut extends Actor
         collisions();
     }
 
-    public boolean onGroundCheck() {
+    public boolean onGroundCheck(){
         int w = getImage().getWidth();
         int h = getImage().getHeight();
         Actor BL = getOneObjectAtOffset(-w/4,  h/2, Platforms.class);
@@ -78,7 +76,7 @@ public class Astronaut extends Actor
         return false;
     }
 
-    public void collisions() {
+    public void collisions(){
         int w = getImage().getWidth();
         int h = getImage().getHeight();
         Actor BL = getOneObjectAtOffset(-w/4,  h/2, Platforms.class);

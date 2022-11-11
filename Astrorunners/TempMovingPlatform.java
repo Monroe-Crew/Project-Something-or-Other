@@ -14,5 +14,5 @@ public class TempMovingPlatform extends Platforms
     public void act() 
     {
         // Add your action code here.
-    }    
+    } 
 }
