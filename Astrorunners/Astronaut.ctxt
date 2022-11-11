@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=Astronaut
+comment1.params=playerID
+comment1.target=Astronaut(int)
+comment2.params=
+comment2.target=void\ act()
+comment3.params=
+comment3.target=boolean\ onGroundCheck()
+comment4.params=
+comment4.target=void\ collisions()
+numComments=5

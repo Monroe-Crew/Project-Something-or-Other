@@ -1,69 +1,81 @@
 import greenfoot.*;
-import java.util.*;
-import java.lang.Math;
-public class Astronaut extends Actor{
-    private double velocityX, velocityY;
-    private double x, y;
+import java.util.List; 
+import java.util.ArrayList;
+public class Astronaut extends Actor
+{
+    private boolean grounded, wHeld;
+    private int xSpeed, ySpeed, xSpeedMax, ySpeedMax, frame;
     private int score;
+    private String[] controls;
     
-    public Astronaut(){
-        this.velocityX = 0;
-        this.velocityY = 0;
+    public Astronaut(int playerID) {
+        this.xSpeedMax = 10;
+        this.ySpeedMax = 20;
         this.score = 0;
+        
+        if(playerID == 1){
+            controls = new String[]{"W", "A", "D"};
+        }
+        else if(playerID == 2){
+            controls = new String[]{"I", "J", "L"};
+        }
+        else if(playerID == 3){
+            controls = new String[]{"S", "Z", "C"};
+        }
+        else if(playerID == 4){
+            controls = new String[]{"K", "M", "."};
+        }
     }
+    
 
-    public void addedToWorld(World world) {
-        x = getX();
-        y = getY();
-    }
-
-    public void act() {
-        List<BlackHole> blackholes = getObjectsInRange(2000, BlackHole.class);
-        if(blackholes.size() > 0) {
-            BlackHole b = blackholes.get(0);
-            int bx = b.getX();
-            int by = b.getY();
-            double xDif = bx - x;
-            double yDif = by - y;
-            double Distance = Math.sqrt(Math.pow(xDif,2)+Math.pow(yDif,2));
-            turnTowards(bx, by);
-            int rotation = getRotation();
-            setRotation(getRotation()-90);
-
-            //setRotation(0);
-            velocityX += 32*(Math.cos(Math.toRadians(rotation)) / Distance);
-            velocityY += 32*(Math.sin(Math.toRadians(rotation)) / Distance);
-            if(velocityX>10){velocityX=10;}
-            if(velocityY>10){velocityY=10;}
-            if(velocityX<-10){velocityX=-10;}
-            if(velocityY<-10){velocityY=-10;}
-            System.out.println("Distance: " + Distance);
-            System.out.println("Rotation: " + rotation);
-            System.out.println("velocityX: " + velocityX);
-            System.out.println("velocityY: " + velocityY);
-            System.out.println("xDif: " + xDif);
-            System.out.println("yDif: " + yDif);
-            if(Distance<15){
-                velocityX = 0;
-                velocityY = 0;
-            }
-            x+=velocityX;
-            y+=velocityY;
+    public void act() 
+    {
+        frame++;
+        // ARE WE GROUNDED?
+        grounded = onGroundCheck();
+        // APPLY GRAVITY
+        ySpeed++;
+        // CHECK KEY PRESSES
+        if(Greenfoot.isKeyDown(controls[0]) && grounded){
+            ySpeed = -20;
+            wHeld = true;
         }
-        if(Greenfoot.isKeyDown("W")){
-            velocityY-=.1;
+        // RELEASE JUMP
+        if(!Greenfoot.isKeyDown(controls[0]) && wHeld && ySpeed < 0) {
+            ySpeed = ySpeed / 2;
+            wHeld = false;
         }
-        if(Greenfoot.isKeyDown("A")){
-            velocityX-=.1;
+        // RUN LEFT/RIGHT
+        if(Greenfoot.isKeyDown(controls[2])){xSpeed++;}
+        if(Greenfoot.isKeyDown(controls[1])){xSpeed--;}
+        // APPLY FRICTION
+        if(frame % 2 == 0) {
+            if(xSpeed > 0) {xSpeed--;}
+            if(xSpeed < 0) {xSpeed++;}
         }
-        if(Greenfoot.isKeyDown("S")){
-            velocityY+=.1;
-        }
-        if(Greenfoot.isKeyDown("D")){
-            velocityX+=.1;
-        }
-        setLocation((int)Math.round(x), (int)Math.round(y));
+        // CAP THEIR SPEEDS
+        if(xSpeed < -xSpeedMax) {xSpeed = -xSpeedMax;}
+        if(xSpeed > xSpeedMax) {xSpeed = xSpeedMax;}
+        if(ySpeed < -ySpeedMax) {ySpeed = -ySpeedMax;}
+        if(ySpeed > ySpeedMax) {ySpeed = ySpeedMax;}
+        // UPDATE LOCATION BASED ON SPEEDS
+        setLocation(getX()+xSpeed, getY()+ySpeed);
+        // FIX POSITION BASED ON COLLISIONS
         collisions();
+    }
+
+    public boolean onGroundCheck() {
+        int w = getImage().getWidth();
+        int h = getImage().getHeight();
+        Actor BL = getOneObjectAtOffset(-w/4,  h/2, Platforms.class);
+        if(BL != null) {
+            return true;
+        }
+        Actor BR = getOneObjectAtOffset( w/4,  h/2, Platforms.class);
+        if(BR != null){
+            return true;
+        }
+        return false;
     }
 
     public void collisions() {
@@ -73,75 +85,57 @@ public class Astronaut extends Actor{
         if(BL != null) {
             int ow = BL.getImage().getWidth();
             int oh = BL.getImage().getHeight();
-            x = x;
-            y = BL.getY()-oh/2-h/2;
-            setLocation((int)Math.round(x), (int)Math.round(y));
-            velocityY = 0;
-            System.out.println("BL");
+            setLocation(getX(), BL.getY()-oh/2-h/2);
+            ySpeed = 0;
         }
         Actor BR = getOneObjectAtOffset( w/4,  h/2, Platforms.class);
         if(BR != null){
             int ow = BR.getImage().getWidth();
             int oh = BR.getImage().getHeight();
-            x = x;
-            y = BR.getY()-oh/2-h/2;
-            setLocation((int)Math.round(x), (int)Math.round(y));
-            velocityY = 0;
-            System.out.println("BR");
+            setLocation(getX(), BR.getY()-oh/2-h/2);
+            ySpeed = 0;
         }
         Actor TL = getOneObjectAtOffset(-w/4, -h/2, Platforms.class);
         if(TL != null){
             int ow = TL.getImage().getWidth();
             int oh = TL.getImage().getHeight();
-            x = x;
-            y = TL.getY()-oh/2-h/2;
-            setLocation((int)Math.round(x),(int)Math.round(y));
-            velocityY = 0;
+            setLocation(getX(), TL.getY()+oh/2+h/2);
+            ySpeed = 0;
         }
         Actor TR = getOneObjectAtOffset( w/4, -h/2, Platforms.class);
         if(TR != null){
             int ow = TR.getImage().getWidth();
             int oh = TR.getImage().getHeight();
-            x = x;
-            y = TR.getY()-oh/2-h/2;
-            setLocation((int)Math.round(x),(int)Math.round(y));
-            velocityY = 0;
+            setLocation(getX(), TR.getY()+oh/2+h/2);
+            ySpeed = 0;
         }
         Actor LT = getOneObjectAtOffset(-w/2, -h/4, Platforms.class);
         if(LT != null){
             int ow = LT.getImage().getWidth();
             int oh = LT.getImage().getHeight();
-            x = LT.getX()+ow/2+w/2;
-            y = y;
-            setLocation((int)Math.round(x),(int)Math.round(y));
-            velocityX = 0;
+            setLocation(LT.getX()+ow/2+w/2, getY());
+            xSpeed = 0;
         }
         Actor LB = getOneObjectAtOffset(-w/2,  h/4, Platforms.class);
         if(LB != null){
             int ow = LB.getImage().getWidth();
             int oh = LB.getImage().getHeight();
-            x = LB.getX()+ow/2+w/2;
-            y = y;
-            setLocation((int)Math.round(x),(int)Math.round(y));
-            velocityX = 0;
+            setLocation(LB.getX()+ow/2+w/2, getY());
+            xSpeed = 0;
         }
         Actor RT = getOneObjectAtOffset( w/2, -h/4, Platforms.class);
         if(RT != null){
             int ow = RT.getImage().getWidth();
             int oh = RT.getImage().getHeight();
-            x = RT.getX()+ow/2+w/2;
-            y = y;
-            setLocation((int)Math.round(x),(int)Math.round(y));
-            velocityX = 0;
+            setLocation(RT.getX()-ow/2-w/2, getY());
+            xSpeed = 0;
         }
         Actor RB = getOneObjectAtOffset( w/2,  h/4, Platforms.class);
         if(RB != null){
             int ow = RB.getImage().getWidth();
             int oh = RB.getImage().getHeight();
-            x = RB.getX()+ow/2+w/2;
-            y = y;
-            setLocation((int)Math.round(x),(int)Math.round(y));
-            velocityX = 0;
+            setLocation(RB.getX()-ow/2-w/2, getY());
+            xSpeed = 0;
         }
     }
 }
