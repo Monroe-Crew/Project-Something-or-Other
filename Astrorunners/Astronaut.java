@@ -6,7 +6,7 @@ public class Astronaut extends Actor
     private boolean grounded, wHeld;
     private int xSpeed, ySpeed, xSpeedMax, ySpeedMax, frame;
     private int score;
-    private List<String> controls = new ArrayList<String>();
+    private String[] controls;
     
     public Astronaut(int playerID) {
         this.xSpeedMax = 10;
@@ -14,24 +14,16 @@ public class Astronaut extends Actor
         this.score = 0;
         
         if(playerID == 1){
-            controls.add("W");
-            controls.add("A");
-            controls.add("D");
+            controls = new String[]{"W", "A", "D"};
         }
         else if(playerID == 2){
-            controls.add("I");
-            controls.add("J");
-            controls.add("L");
+            controls = new String[]{"I", "J", "L"};
         }
         else if(playerID == 3){
-            controls.add("S");
-            controls.add("Z");
-            controls.add("C");
+            controls = new String[]{"S", "Z", "C"};
         }
         else if(playerID == 4){
-            controls.add("K");
-            controls.add("M");
-            controls.add(".");
+            controls = new String[]{"K", "M", "."};
         }
     }
     
@@ -44,18 +36,18 @@ public class Astronaut extends Actor
         // APPLY GRAVITY
         ySpeed++;
         // CHECK KEY PRESSES
-        if(Greenfoot.isKeyDown(controls.get(0)) && grounded){
+        if(Greenfoot.isKeyDown(controls[0]) && grounded){
             ySpeed = -20;
             wHeld = true;
         }
         // RELEASE JUMP
-        if(!Greenfoot.isKeyDown(controls.get(0)) && wHeld && ySpeed < 0) {
+        if(!Greenfoot.isKeyDown(controls[0]) && wHeld && ySpeed < 0) {
             ySpeed = ySpeed / 2;
             wHeld = false;
         }
         // RUN LEFT/RIGHT
-        if(Greenfoot.isKeyDown(controls.get(2))){xSpeed++;}
-        if(Greenfoot.isKeyDown(controls.get(1))){xSpeed--;}
+        if(Greenfoot.isKeyDown(controls[2])){xSpeed++;}
+        if(Greenfoot.isKeyDown(controls[1])){xSpeed--;}
         // APPLY FRICTION
         if(frame % 2 == 0) {
             if(xSpeed > 0) {xSpeed--;}
