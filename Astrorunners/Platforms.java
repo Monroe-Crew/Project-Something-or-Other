@@ -21,12 +21,12 @@ public class Platforms extends Actor
             turnTowards(bx, by);
             int rotation = getRotation();
             setRotation(getRotation()-90);
-            velocityX = .1;
-            velocityY = .1;
-            double[] revolutionPoint = revolve(640,480,x+velocityX,y+velocityY,getRotation());
-            x += revolutionPoint[0];
-            y += revolutionPoint[1];
-            setLocation((int)Math.round(x), (int)Math.round(y));
+            //velocityX = .1;
+            //velocityY = .1;
+            //double[] revolutionPoint = revolve(640,480,x+velocityX,y+velocityY,getRotation());
+            //x += revolutionPoint[0];
+            //y += revolutionPoint[1];
+            //setLocation((int)Math.round(x), (int)Math.round(y));
         }
     }
 
