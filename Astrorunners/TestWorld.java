@@ -15,7 +15,5 @@ public class TestWorld extends World{
         addObject(astronaut,625,163);
         Platform1 platform1 = new Platform1();
         addObject(platform1,646,259);
-        platform1.setLocation(500,386);
-        platform1.setLocation(639,257);
     }
 }

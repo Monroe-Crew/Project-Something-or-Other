@@ -48,8 +48,8 @@ public class Astronaut extends Actor{
                 setRotation(getRotation()-90);
 
                 //setRotation(0);
-                velocityX += 30*(Math.cos(Math.toRadians(rotation)) / Distance);
-                velocityY += 30*(Math.sin(Math.toRadians(rotation)) / Distance);
+                //velocityX += 30*(Math.cos(Math.toRadians(rotation)) / Distance);
+                //velocityY += 30*(Math.sin(Math.toRadians(rotation)) / Distance);
             }
             else{
                 velocityX /= 2;
@@ -99,11 +99,6 @@ public class Astronaut extends Actor{
         thingyBL.setLocation((int)BLA[0],(int)BLA[1]);
         if(blackholes.size() > 0){
             if(BL.size() > 0) {
-                //int ow = BL.get(0).getImage().getWidth();
-                //int oh = BL.get(0).getImage().getHeight();
-                //double[] OA = pointRotation(b.getX(),b.getY(),x,y,rotation);
-                //x = OA[0];
-                //y = OA[1];
                 while(BL.size() > 0) {
                     turn(-90);
                     move(1);
@@ -115,8 +110,6 @@ public class Astronaut extends Actor{
                     isColliding = true;
                 }
                 setLocation((int)Math.round(x), (int)Math.round(y));
-                //velocityX *= .5;
-                //velocityY *= .5;
                 System.out.println("BL");
             }
             isColliding = false;
@@ -124,11 +117,6 @@ public class Astronaut extends Actor{
             List<Platforms> BR = getWorld().getObjectsAt((int)BRA[0],(int)BRA[1], Platforms.class);
             thingyBR.setLocation((int)BRA[0],(int)BRA[1]);
             if(BR.size() > 0){
-                //int ow = BR.get(0).getImage().getWidth();
-                //int oh = BR.get(0).getImage().getHeight();
-                //double[] OA = pointRotation(b.getX(),b.getY(),x,y,rotation);
-                //x = OA[0];
-                //y = OA[1];
                 while(BR.size() > 0) {
                     turn(-90);
                     move(1);
@@ -140,8 +128,6 @@ public class Astronaut extends Actor{
                     isColliding = true;
                 }
                 setLocation((int)Math.round(x), (int)Math.round(y));
-                //velocityX *= .5;
-                //velocityY *= .5;
                 System.out.println("BR");
             }
             isColliding = false;
@@ -149,10 +135,6 @@ public class Astronaut extends Actor{
             List<Platforms> TL = getWorld().getObjectsAt((int)TLA[0],(int)TLA[1], Platforms.class);
             thingyTL.setLocation((int)TLA[0],(int)TLA[1]);
             if(TL.size() > 0){
-                //int ow = TL.get(0).getImage().getWidth();
-                //int oh = TL.get(0).getImage().getHeight();
-                //x = x;
-                //y = TL.get(0).getY()+oh/2+h/2;
                 while(TL.size() > 0) {
                     turn(90);
                     move(1);
@@ -163,7 +145,6 @@ public class Astronaut extends Actor{
                     TL = getWorld().getObjectsAt((int)TLA[0],(int)TLA[1], Platforms.class);
                 }
                 setLocation((int)Math.round(x),(int)Math.round(y));
-                velocityX *= 1;
                 velocityY *= -1;
                 System.out.println("TL");
             }
@@ -171,10 +152,6 @@ public class Astronaut extends Actor{
             List<Platforms> TR = getWorld().getObjectsAt((int)TRA[0],(int)TRA[1], Platforms.class);
             thingyTR.setLocation((int)TRA[0],(int)TRA[1]);
             if(TR.size() > 0){
-                //int ow = TR.get(0).getImage().getWidth();
-                //int oh = TR.get(0).getImage().getHeight();
-                //x = x;
-                //y = TR.get(0).getY()+oh/2+h/2;
                 while(TR.size() > 0) {
                     turn(90);
                     move(1);
@@ -185,60 +162,43 @@ public class Astronaut extends Actor{
                     TR = getWorld().getObjectsAt((int)TRA[0],(int)TRA[1], Platforms.class);
                 }
                 setLocation((int)Math.round(x),(int)Math.round(y));
-                velocityX *= 1;
                 velocityY *= -1;
                 System.out.println("TR");
             }
-            /*
             double[] LTA = pointRotation(x,y,x-w/2,y-h/4,rotation);
             List<Platforms> LT = getWorld().getObjectsAt((int)LTA[0],(int)LTA[1], Platforms.class);
             thingyLT.setLocation((int)LTA[0],(int)LTA[1]);
             if(LT.size() > 0){
-            int ow = LT.get(0).getImage().getWidth();
-            int oh = LT.get(0).getImage().getHeight();
-            x = LT.get(0).getX()-ow/2+w/2;
-            y = y;
-            setLocation((int)Math.round(x),(int)Math.round(y));
-            velocityX = 0;
-            System.out.println("LT");
+                setLocation((int)Math.round(x),(int)Math.round(y));
+                velocityY *= Math.sin(Math.toRadians(LT.get(0).getRotation())) * -1;
+                velocityX *= Math.cos(Math.toRadians(LT.get(0).getRotation())) * -1;
+                System.out.println("LT");
             }
             double[] LBA = pointRotation(x,y,x-w/2,y+h/4,rotation);
             List<Platforms> LB = getWorld().getObjectsAt((int)LBA[0],(int)LBA[1], Platforms.class);
             thingyLB.setLocation((int)LBA[0],(int)LBA[1]);
             if(LB.size() > 0){
-            int ow = LB.get(0).getImage().getWidth();
-            int oh = LB.get(0).getImage().getHeight();
-            x = LB.get(0).getX()-ow/2+w/2;
-            y = y;
-            setLocation((int)Math.round(x),(int)Math.round(y));
-            velocityX = 0;
-            System.out.println("LB");
+                setLocation((int)Math.round(x),(int)Math.round(y));
+                velocityY *= Math.sin(Math.toRadians(LB.get(0).getRotation())) * -1;
+                velocityX *= Math.cos(Math.toRadians(LB.get(0).getRotation())) * -1;
+                System.out.println("LB");
             }
             double[] RTA = pointRotation(x,y,x+w/2,y-h/4,rotation);
             List<Platforms> RT = getWorld().getObjectsAt((int)RTA[0],(int)RTA[1], Platforms.class);
             thingyRT.setLocation((int)RTA[0],(int)RTA[1]);
             if(RT.size() > 0){
-            int ow = RT.get(0).getImage().getWidth();
-            int oh = RT.get(0).getImage().getHeight();
-            x = RT.get(0).getX()-ow/2-w/2;
-            y = y;
-            setLocation((int)Math.round(x),(int)Math.round(y));
-            velocityX = 0;
-            System.out.println("RT");
+                setLocation((int)Math.round(x),(int)Math.round(y));
+                velocityX *= -1;
+                System.out.println("RT");
             }
             double[] RBA = pointRotation(x,y,x+w/2,y+h/4,rotation);
             List<Platforms> RB = getWorld().getObjectsAt((int)RBA[0],(int)RBA[1], Platforms.class);
             thingyRB.setLocation((int)RBA[0],(int)RBA[1]);
             if(RB.size() > 0){
-            int ow = RB.get(0).getImage().getWidth();
-            int oh = RB.get(0).getImage().getHeight();
-            x = RB.get(0).getX()-ow/2-w/2;
-            y = y;
-            setLocation((int)Math.round(x),(int)Math.round(y));
-            velocityX = 0;
-            System.out.println("RB");
+                setLocation((int)Math.round(x),(int)Math.round(y));
+                velocityX *= -1;
+                System.out.println("RB");
             }
-             */
         }
     }
 
