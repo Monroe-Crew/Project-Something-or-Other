@@ -1,7 +1,9 @@
 #Greenfoot project file
-class.Astronaut.image=man01.png
+class.Astronaut.image=Blue\ Astronaut.png
+class.BlackHole.image=Black\ Hole.png
 class.TempMovingPlatform.image=TempPlatform.png
 class.TempNonMovingPlatform.image=TempPlatform.png
+class.TestWorld.image=Main\ Background.png
 dependency1.from=TestWorld
 dependency1.to=BlackHole
 dependency1.type=UsesDependency
@@ -162,6 +164,6 @@ target9.x=0
 target9.y=0
 version=3.0.0
 width=1936
-world.lastInstantiated=Astrorunners
+world.lastInstantiated=TestWorld
 xPosition=0
 yPosition=0
