@@ -60,6 +60,12 @@ public class Astronaut extends Actor{
         setLocation(getX()+xSpeed, getY()+ySpeed);
         // FIX POSITION BASED ON COLLISIONS
         collisions();
+        
+        // scorekeeping
+        
+        PlayerScore pScore = new PlayerScore(String.valueOf(score));
+        
+        
     }
 
     public boolean onGroundCheck(){
