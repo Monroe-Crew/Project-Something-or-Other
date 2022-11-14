@@ -33,46 +33,6 @@ public class Astronaut extends Actor{
     }
 
     public void act() {
-        List<BlackHole> blackholes = getObjectsInRange(2000, BlackHole.class);
-        if(blackholes.size() > 0) {
-            BlackHole b = blackholes.get(0);
-            int bx = b.getX();
-            int by = b.getY();
-            double xDif = bx - x;
-            double yDif = by - y;
-            double Distance = Math.sqrt(Math.pow(xDif,2)+Math.pow(yDif,2));
-            if(!isColliding){
-
-                turnTowards(bx, by);
-                rotation = getRotation();
-                setRotation(getRotation()-90);
-
-                //setRotation(0);
-                //velocityX += 30*(Math.cos(Math.toRadians(rotation)) / Distance);
-                //velocityY += 30*(Math.sin(Math.toRadians(rotation)) / Distance);
-            }
-            else{
-                velocityX /= 2;
-                velocityY /= 2;
-            }
-
-            if(velocityX>10){velocityX=10;}
-            if(velocityY>10){velocityY=10;}
-            if(velocityX<-10){velocityX=-10;}
-            if(velocityY<-10){velocityY=-10;}
-            //System.out.println("Distance: " + Distance);
-            //System.out.println("Rotation: " + rotation);
-            //System.out.println("velocityX: " + velocityX);
-            //System.out.println("velocityY: " + velocityY);
-            //System.out.println("xDif: " + xDif);
-            //System.out.println("yDif: " + yDif);
-            if(Distance<15){
-                velocityX = 0;
-                velocityY = 0;
-            }
-            x+=velocityX;
-            y+=velocityY;
-        }
         if(Greenfoot.isKeyDown("W")){
             velocityY-=.1;
         }
@@ -85,8 +45,69 @@ public class Astronaut extends Actor{
         if(Greenfoot.isKeyDown("D")){
             velocityX+=.1;
         }
+
+        List<BlackHole> blackholes = getObjectsInRange(2000, BlackHole.class);
+        List<Platforms> platforms = getObjectsInRange(2000, Platforms.class);
+        if(blackholes.size() > 0) {
+            BlackHole b = blackholes.get(0);
+            int bx = b.getX();
+            int by = b.getY();
+            double xDif = bx - x;
+            double yDif = by - y;
+            double Distance = Math.sqrt(Math.pow(xDif,2)+Math.pow(yDif,2));
+            if(!feetOnGround()){
+                turnTowards(bx, by);
+                rotation = getRotation();
+                setRotation(getRotation()-90);
+                velocityX += 30*(Math.cos(Math.toRadians(rotation)) / Distance);
+                velocityY += 30*(Math.sin(Math.toRadians(rotation)) / Distance);
+            }
+
+            if(Distance<15){
+                velocityX = 0;
+                velocityY = 0;
+            }
+        }
+
+        System.out.println(feetOnGround());
+        if(Greenfoot.isKeyDown("SPACE") && feetOnGround()) {
+            velocityY = 3 * Math.cos(Math.toRadians(platforms.get(0).getRotation())) * -1;
+            velocityX = 3 * Math.sin(Math.toRadians(platforms.get(0).getRotation()-180)) * -1;
+            System.out.println("JUMP");
+        }
+
+        if(velocityX>10){velocityX=10;}
+        if(velocityY>10){velocityY=10;}
+        if(velocityX<-10){velocityX=-10;}
+        if(velocityY<-10){velocityY=-10;}
+
+        x+=velocityX;
+        y+=velocityY;
+
+        //System.out.println("Distance: " + Distance);
+        //System.out.println("Rotation: " + rotation);
+        //System.out.println("velocityX: " + velocityX);
+        //System.out.println("velocityY: " + velocityY);
+        //System.out.println("xDif: " + xDif);
+        //System.out.println("yDif: " + yDif);
+
         setLocation((int)Math.round(x), (int)Math.round(y));
         collisions();
+    }
+
+    public boolean feetOnGround() {
+        int w = getImage().getWidth();
+        int h = getImage().getHeight();
+
+        double[] BLA = pointRotation(x,y,x-w/4,y+h/2+5,rotation);
+        List<Platforms> BL = getWorld().getObjectsAt((int)BLA[0],(int)BLA[1], Platforms.class);
+
+        double[] BRA = pointRotation(x,y,x+w/4,y+h/2+5,rotation);
+        List<Platforms> BR = getWorld().getObjectsAt((int)BRA[0],(int)BRA[1], Platforms.class);
+        if(BL.size() > 0 || BR.size() > 0) {
+            return true;
+        }
+        return false;
     }
 
     public void collisions() {
@@ -114,10 +135,6 @@ public class Astronaut extends Actor{
                 setLocation((int)Math.round(x), (int)Math.round(y));
                 velocityX=0;
                 velocityY=0;
-                if(Greenfoot.isKeyDown("SPACEBAR")){
-                    velocityY = 1.5 * Math.cos(Math.toRadians(BL.get(0).getRotation())) * -1;
-                    velocityX = 1.5 *Math.sin(Math.toRadians(BL.get(0).getRotation()-180)) * -1;
-                }
                 System.out.println("BL");
             }
             isColliding = false;
