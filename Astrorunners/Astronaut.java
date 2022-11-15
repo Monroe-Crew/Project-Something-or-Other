@@ -47,7 +47,7 @@ public class Astronaut extends Actor{
         }
 
         List<BlackHole> blackholes = getObjectsInRange(2000, BlackHole.class);
-        List<Platforms> platforms = getObjectsInRange(2000, Platforms.class);
+        List<Platforms> platforms = getObjectsInRange(100, Platforms.class);
         if(blackholes.size() > 0) {
             BlackHole b = blackholes.get(0);
             int bx = b.getX();
@@ -59,8 +59,8 @@ public class Astronaut extends Actor{
                 turnTowards(bx, by);
                 rotation = getRotation();
                 setRotation(getRotation()-90);
-                velocityX += 30*(Math.cos(Math.toRadians(rotation)) / Distance);
-                velocityY += 30*(Math.sin(Math.toRadians(rotation)) / Distance);
+                velocityX += 60*(Math.cos(Math.toRadians(rotation)) / Distance);
+                velocityY += 60*(Math.sin(Math.toRadians(rotation)) / Distance);
             }
 
             if(Distance<15){
@@ -71,8 +71,8 @@ public class Astronaut extends Actor{
 
         System.out.println(feetOnGround());
         if(Greenfoot.isKeyDown("SPACE") && feetOnGround()) {
-            velocityY = 3 * Math.cos(Math.toRadians(platforms.get(0).getRotation())) * -1;
-            velocityX = 3 * Math.sin(Math.toRadians(platforms.get(0).getRotation()-180)) * -1;
+            velocityY = 6 * Math.cos(Math.toRadians(platforms.get(0).getRotation())) * -1;
+            velocityX = 6 * Math.sin(Math.toRadians(platforms.get(0).getRotation()-180)) * -1;
             System.out.println("JUMP");
         }
 
