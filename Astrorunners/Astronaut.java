@@ -43,6 +43,9 @@ public class Astronaut extends Actor{
         x = getX();
         y = getY();
     }
+    
+   
+    
 
     public void act() {
         if(Greenfoot.isKeyDown(controls[0])){
