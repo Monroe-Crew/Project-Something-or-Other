@@ -6,30 +6,15 @@ public class Astronaut extends Actor{
     private double x, y;
     private int rotation = 0;
     private String[] controls;
-    /*
-    Thingy thingyBL = new Thingy("BL");
-    Thingy thingyBR = new Thingy("BR");
-    Thingy thingyTL = new Thingy("TL");
-    Thingy thingyTR = new Thingy("TR");
-    Thingy thingyLT = new Thingy("LT");
-    Thingy thingyLB = new Thingy("LB");
-    Thingy thingyRT = new Thingy("RT");
-    Thingy thingyRB = new Thingy("RB");
-<<<<<<< Updated upstream
-    */
     public Astronaut(int PlayerID){
-=======
-     */
-    public Astronaut(){
->>>>>>> Stashed changes
         this.velocityX = 0;
         this.velocityY = 0;
         if(PlayerID == 1){
-             controls = new String[]{"W","A","S","D","X"};
+            controls = new String[]{"W","A","S","D","X"};
         }else if(PlayerID == 2){
-             controls = new String[]{"I","J","K","L",","};
+            controls = new String[]{"I","J","K","L",","};
         }else if(PlayerID ==  3){
-             controls = new String[]{"U","H","J","K","M"};
+            controls = new String[]{"U","H","J","K","M"};
         }else if(PlayerID == 4){
             controls = new String[]{"P","L",";","'","/"};
         }

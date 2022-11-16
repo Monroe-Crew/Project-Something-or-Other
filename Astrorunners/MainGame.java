@@ -9,7 +9,6 @@ public class MainGame extends World{
         // Constructs stage
         BlackHole blackHole = new BlackHole();
         addObject(blackHole,602,411);
-<<<<<<< Updated upstream
 
         int numPlayers = 2;
 
@@ -17,8 +16,8 @@ public class MainGame extends World{
          * TODO: IMPLEMENT DETERMINATION OF NO. OF PLAYERS
          */
         
-        Astronaut blueAstronaut = new Astronaut();
-        Astronaut greenAstronaut = new Astronaut();
+        Astronaut blueAstronaut = new Astronaut(1);
+        Astronaut greenAstronaut = new Astronaut(2);
         // Astronaut 3
         // Astronaut 4
 
@@ -50,9 +49,7 @@ public class MainGame extends World{
             addObject(greenAstronaut, 0, 0);
             
         }
-=======
         Goal goal = new Goal();
         addObject(goal,1186,409);
->>>>>>> Stashed changes
     }
 }

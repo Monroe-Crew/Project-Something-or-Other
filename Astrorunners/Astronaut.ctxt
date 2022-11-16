@@ -1,8 +1,7 @@
 #BlueJ class context
 comment0.target=Astronaut
-comment1.params=
-comment1.target=Astronaut()
-comment1.text=\r\n\ \ \ \ Thingy\ thingyBL\ \=\ new\ Thingy("BL");\r\n\ \ \ \ Thingy\ thingyBR\ \=\ new\ Thingy("BR");\r\n\ \ \ \ Thingy\ thingyTL\ \=\ new\ Thingy("TL");\r\n\ \ \ \ Thingy\ thingyTR\ \=\ new\ Thingy("TR");\r\n\ \ \ \ Thingy\ thingyLT\ \=\ new\ Thingy("LT");\r\n\ \ \ \ Thingy\ thingyLB\ \=\ new\ Thingy("LB");\r\n\ \ \ \ Thingy\ thingyRT\ \=\ new\ Thingy("RT");\r\n\ \ \ \ Thingy\ thingyRB\ \=\ new\ Thingy("RB");\r\n
+comment1.params=PlayerID
+comment1.target=Astronaut(int)
 comment2.params=world
 comment2.target=void\ addedToWorld(greenfoot.World)
 comment3.params=
