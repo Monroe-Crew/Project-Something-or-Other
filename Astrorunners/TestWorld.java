@@ -13,22 +13,23 @@ public class TestWorld extends World{
         blackHole.setLocation(649,394);
         Astronaut astronaut = new Astronaut(1);
         addObject(astronaut,625,163);
-        Platform1 platform1 = new Platform1();
-        addObject(platform1,646,259);
+        
 
         // instantiates playerScore actor
         
-        PlayerScore player1 = new PlayerScore("Score " + );
+        /* PlayerScore player1 = new PlayerScore("Score " + );
         PlayerScore player2 = new PlayerScore("Score " + );
         PlayerScore player3 = new PlayerScore("Score " + );
         PlayerScore player4 = new PlayerScore("Score " + );
+        */
         
         int numPlayers;
         
         // TODO: Determine number of players
         
         // Instantiates player score at the top of the screen
-        switch(numPlayers){
+        
+        /* switch(numPlayers){
             case 4:
                 addObject(player4, 0, 0);
                 addObject(player3, 0, 0);
@@ -38,7 +39,7 @@ public class TestWorld extends World{
                 addObject(player2, 0, 0);
                 addObject(player1, 0, 0);
         }
-
+           */
         
     }
 }
