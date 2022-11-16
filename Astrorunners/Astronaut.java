@@ -5,6 +5,7 @@ public class Astronaut extends Actor{
     private double velocityX, velocityY;
     private double x, y;
     private int rotation = 0;
+    private String[] controls;
     /*
     Thingy thingyBL = new Thingy("BL");
     Thingy thingyBR = new Thingy("BR");
@@ -15,9 +16,18 @@ public class Astronaut extends Actor{
     Thingy thingyRT = new Thingy("RT");
     Thingy thingyRB = new Thingy("RB");
     */
-    public Astronaut(){
+    public Astronaut(int PlayerID){
         this.velocityX = 0;
         this.velocityY = 0;
+        if(PlayerID == 1){
+             controls = new String[]{"W","A","S","D","X"};
+        }else if(PlayerID == 2){
+             controls = new String[]{"I","J","K","L",","};
+        }else if(PlayerID ==  3){
+             controls = new String[]{"U","H","J","K","M"};
+        }else if(PlayerID == 4){
+            controls = new String[]{"P","L",";","'","/"};
+        }
     }
 
     public void addedToWorld(World world) {
@@ -36,16 +46,16 @@ public class Astronaut extends Actor{
     }
 
     public void act() {
-        if(Greenfoot.isKeyDown("W")){
+        if(Greenfoot.isKeyDown(controls[0])){
             velocityY-=.1;
         }
-        if(Greenfoot.isKeyDown("A")){
+        if(Greenfoot.isKeyDown(controls[1])){
             velocityX-=.1;
         }
-        if(Greenfoot.isKeyDown("S")){
+        if(Greenfoot.isKeyDown(controls[2])){
             velocityY+=.1;
         }
-        if(Greenfoot.isKeyDown("D")){
+        if(Greenfoot.isKeyDown(controls[3])){
             velocityX+=.1;
         }
 
@@ -72,7 +82,7 @@ public class Astronaut extends Actor{
             }
         }
 
-        if(Greenfoot.isKeyDown("SPACE") && feetOnGround()) {
+        if(Greenfoot.isKeyDown(controls[4]) && feetOnGround()) {
             velocityY = 4 * Math.cos(Math.toRadians(platforms.get(0).getRotation())) * -1;
             velocityX = 4 * Math.sin(Math.toRadians(platforms.get(0).getRotation()-180)) * -1;
         }
