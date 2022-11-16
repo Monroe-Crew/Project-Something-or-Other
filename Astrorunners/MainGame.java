@@ -9,6 +9,7 @@ public class MainGame extends World{
         // Constructs stage
         BlackHole blackHole = new BlackHole();
         addObject(blackHole,602,411);
+<<<<<<< Updated upstream
 
         int numPlayers = 2;
 
@@ -49,5 +50,9 @@ public class MainGame extends World{
             addObject(greenAstronaut, 0, 0);
             
         }
+=======
+        Goal goal = new Goal();
+        addObject(goal,1186,409);
+>>>>>>> Stashed changes
     }
 }

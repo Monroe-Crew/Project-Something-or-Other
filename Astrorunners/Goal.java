@@ -1,9 +1,8 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
-public class Goal extends Actor
+import greenfoot.*;
+public class Goal extends Platforms
 {
-   public void act() 
+    public void act() 
     {
-        // Add your action code here.
+        
     }    
 }

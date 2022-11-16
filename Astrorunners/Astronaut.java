@@ -15,8 +15,13 @@ public class Astronaut extends Actor{
     Thingy thingyLB = new Thingy("LB");
     Thingy thingyRT = new Thingy("RT");
     Thingy thingyRB = new Thingy("RB");
+<<<<<<< Updated upstream
     */
     public Astronaut(int PlayerID){
+=======
+     */
+    public Astronaut(){
+>>>>>>> Stashed changes
         this.velocityX = 0;
         this.velocityY = 0;
         if(PlayerID == 1){
@@ -40,7 +45,7 @@ public class Astronaut extends Actor{
         getWorld().addObject(thingyLB,0,0);
         getWorld().addObject(thingyRT,0,0);
         getWorld().addObject(thingyRB,0,0);
-        */
+         */
         x = getX();
         y = getY();
     }
@@ -222,6 +227,7 @@ public class Astronaut extends Actor{
                 velocityX *= Math.cos(Math.toRadians(RB.get(0).getRotation())) * -1;
             }
         }
+
     }
 
     private double[] pointRotation(double pivotX, double pivotY, double pointX, double pointY, int rotation){
