@@ -1,6 +1,6 @@
 import greenfoot.*;
-public class TestWorld extends World{
-    public TestWorld(){    
+public class MainGame extends World{
+    public MainGame(){    
         super(Constants.WIDTH, Constants.HEIGHT, 1); 
         prepare();
     }
