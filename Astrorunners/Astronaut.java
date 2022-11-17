@@ -6,16 +6,20 @@ public class Astronaut extends Actor{
     private double x, y;
     private int rotation = 0;
     private String[] controls;
-    public Astronaut(int PlayerID){
+    private int wins;
+    private int playerID;
+    private int startingX, startingY;
+    public Astronaut(int playerID){
         this.velocityX = 0;
         this.velocityY = 0;
-        if(PlayerID == 1){
+        this.playerID = playerID;
+        if(playerID == 1){
             controls = new String[]{"W","A","S","D","R"};
-        }else if(PlayerID == 2){
+        }else if(playerID == 2){
             controls = new String[]{"I","J","K","L","O"};
-        }else if(PlayerID ==  3){
+        }else if(playerID ==  3){
             controls = new String[]{"UP","LEFT","DOWN","RIGHT","SPACE"};
-        }else if(PlayerID == 4){
+        }else if(playerID == 4){
             controls = new String[]{"5","1","2","3","9"};
         }
     }
@@ -33,6 +37,8 @@ public class Astronaut extends Actor{
          */
         x = getX();
         y = getY();
+        startingX = (int)x;
+        startingY = (int)y;
     }
 
     public void act() {
@@ -69,6 +75,7 @@ public class Astronaut extends Actor{
             if(Distance<15){
                 velocityX = 0;
                 velocityY = 0;
+                setLocation(startingX, startingY);
             }
         }
 
@@ -224,5 +231,14 @@ public class Astronaut extends Actor{
         Math.cos(Math.toRadians(rotation-90)) * (pointY-pivotY) + pivotY;
         //System.out.println("pointRotation returning: "+newPoint[0]+" "+newPoint[1]);
         return newPoint;
+    }
+    public int getPlayerID(){
+        return this.playerID;
+    }
+    public int getWins(){
+        return this.wins;
+    }
+    public void setWins(int newWins){
+        this.wins = newWins;
     }
 }
