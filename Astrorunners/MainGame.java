@@ -1,54 +1,43 @@
 import greenfoot.*;
+import java.util.List;
 public class MainGame extends World{
-    public MainGame(){    
+    public MainGame(List<Integer> playersJoined){    
         super(Constants.WIDTH, Constants.HEIGHT, 1); 
-        prepare();
+        prepare(playersJoined);
     }
 
-    private void prepare(){
+    private void prepare(List<Integer> playersJoined){
         // Constructs stage
         BlackHole blackHole = new BlackHole();
         addObject(blackHole,602,411);
 
-        int numPlayers = 2;
-
-        /**
-         * TODO: IMPLEMENT DETERMINATION OF NO. OF PLAYERS
-         */
-        
-        Astronaut blueAstronaut = new Astronaut(1);
-        Astronaut greenAstronaut = new Astronaut(2);
-        // Astronaut 3
-        // Astronaut 4
-
-        PlayerScore player1Score = new PlayerScore(" ");
-        PlayerScore player2Score = new PlayerScore(" ");
-        PlayerScore player3Score = new PlayerScore(" ");
-        PlayerScore player4Score = new PlayerScore(" ");
-
-        switch(numPlayers){
-            case 4:
-            //Instantiates score for 3rd and 4th player
-            addObject(player4Score, 0, 0);
-            addObject(player3Score, 0, 0);
-            //Instantiates 3rd and 4th player astronauts
-            //addObject(astronaut4)
-            //addObject(astronaut3)
-            
-            case 3:
-            //Instantiates score for 3rd player
-            addObject(player3Score, 0, 0);
-            //addObject(astronaut3)
-            
-            default:
-            //Instantiates score for 1st and 2nd player
-            addObject(player2Score, 0, 0);
-            addObject(player1Score, 0, 0);
-            //Instantiates 2 player astronauts
-            addObject(blueAstronaut, 0, 0);
-            addObject(greenAstronaut, 0, 0);
-            
-        }
+        int numPlayers = playersJoined.size();
+        for(int i = 0; i < numPlayers; i++){
+            if(playersJoined.get(i) == 1){
+                Astronaut blueAstronaut = new Astronaut(1);
+                addObject(blueAstronaut,150,290);
+                Platform2 blueStart = new Platform2();
+                addObject(blueStart,175,290);
+            }
+            else if(playersJoined.get(i) == 2){
+                Astronaut greenAstronaut = new Astronaut(2);
+                addObject(greenAstronaut,150,480);
+                Platform2 greenStart = new Platform2();
+                addObject(greenStart,175,480);
+            }
+            else if(playersJoined.get(i) == 2){
+                Astronaut pinkAstronaut = new Astronaut(3);
+                addObject(pinkAstronaut,150,670);
+                Platform2 pinkStart = new Platform2();
+                addObject(pinkStart,175,670);
+            }
+            else if(playersJoined.get(i) == 2){
+                Astronaut yellowAstronaut = new Astronaut(4);
+                addObject(yellowAstronaut,150,860);
+                Platform2 yellowStart = new Platform2();
+                addObject(yellowStart,175,860);
+            }
+        }    
         Goal goal = new Goal();
         addObject(goal,1186,409);
     }
