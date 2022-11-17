@@ -17,7 +17,7 @@ public class Astronaut extends Actor{
         }else if(PlayerID == 2){
             controls = new String[]{"I","J","K","L","O"};
         }else if(PlayerID ==  3){
-            controls = new String[]{"UP","LEFT","DOWN","RIGHT","SPACE"};
+            controls = new String[]{"UP","LEFT","DOWN","RIGHT","B"};
         }else if(PlayerID == 4){
             controls = new String[]{"5","1","2","3","9"};
         }

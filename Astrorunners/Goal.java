@@ -23,7 +23,11 @@ public class Goal extends Platforms{
             int winner = checkWinner(alivePlayers, playersJoined);
             System.out.println(winner);
             for(int i = 0; i < allPlayers.size(); i++){
-                if(winner == allPlayers.get(i).getPlayerID()){
+                if(winner == allPlayers.get(i).getPlayerID() && round == 6){
+                    allPlayers.get(i).setWins(allPlayers.get(i).getWins() + 1);
+                    Greenfoot.setWorld(new EndScreen(allPlayers));
+                }
+                else if(winner == allPlayers.get(i).getPlayerID()){
                     allPlayers.get(i).setWins(allPlayers.get(i).getWins() + 1);
                     Greenfoot.setWorld(new Round_End(allPlayers, winner, this.round));
                 }
