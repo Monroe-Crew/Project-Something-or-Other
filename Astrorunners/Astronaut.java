@@ -10,13 +10,13 @@ public class Astronaut extends Actor{
         this.velocityX = 0;
         this.velocityY = 0;
         if(PlayerID == 1){
-            controls = new String[]{"W","A","S","D","X"};
+            controls = new String[]{"W","A","S","D","R"};
         }else if(PlayerID == 2){
-            controls = new String[]{"I","J","K","L",","};
+            controls = new String[]{"I","J","K","L","O"};
         }else if(PlayerID ==  3){
-            controls = new String[]{"U","H","J","K","M"};
+            controls = new String[]{"UP","LEFT","DOWN","RIGHT","SPACE"};
         }else if(PlayerID == 4){
-            controls = new String[]{"P","L",";","'","/"};
+            controls = new String[]{"5","1","2","3","9"};
         }
     }
 
