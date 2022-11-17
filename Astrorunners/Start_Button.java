@@ -8,7 +8,7 @@ public class Start_Button extends Actor
         if(Greenfoot.mouseClicked(this)){
             System.out.println(playersJoined);
             Greenfoot.playSound("GameBegin.mp3");
-            Greenfoot.setWorld(new MainGame(playersJoined));
+            Greenfoot.setWorld(new MainGame(playersJoined, 0));
         }
     }
     public List<Integer> getPlayersJoined(){
