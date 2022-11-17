@@ -84,7 +84,7 @@ public class Astronaut extends Actor{
 
         x+=velocityX;
         y+=velocityY;
-
+        
         //System.out.println("Distance: " + Distance);
         //System.out.println("Rotation: " + rotation);
         //System.out.println("velocityX: " + velocityX);
