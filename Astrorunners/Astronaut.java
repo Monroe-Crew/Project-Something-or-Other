@@ -6,11 +6,12 @@ public class Astronaut extends Actor{
     private double x, y;
     private int rotation = 0;
     private String[] controls;
-    private int ID;
+    private int playerID;
+    private int wins;
     public Astronaut(int PlayerID){
         this.velocityX = 0;
         this.velocityY = 0;
-        setID(PlayerID);
+        setplayerID(PlayerID);
         if(PlayerID == 1){
             controls = new String[]{"W","A","S","D","R"};
         }else if(PlayerID == 2){
@@ -22,12 +23,20 @@ public class Astronaut extends Actor{
         }
     }
     
-    public int setID(int i){
-        return this.ID = i;
+    public int setplayerID(int i){
+        return this.playerID = i;
     }
     
-    public int getID(){
-        return ID;
+    public int getPlayerID(){
+        return this.playerID;
+    }
+    
+    public int setWins(int w){
+        return this.wins = w;
+    }
+    
+    public int getWins(){
+        return this.wins;
     }
 
     public void addedToWorld(World world) {
