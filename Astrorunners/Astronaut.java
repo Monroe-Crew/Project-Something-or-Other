@@ -8,6 +8,9 @@ public class Astronaut extends Actor{
     private String[] controls;
     private int playerID;
     private int wins;
+    //these two are for grabbing the respawn cords :3
+    private static int spawnX;
+    private static int spawnY;
     public Astronaut(int PlayerID){
         this.velocityX = 0;
         this.velocityY = 0;
@@ -23,7 +26,23 @@ public class Astronaut extends Actor{
         }
     }
     
-    public int setplayerID(int i){
+    public static int setspawnX(int i){
+        return spawnX = i;
+    }
+    
+    public static int getspawnX(){
+        return spawnX;
+    }
+    
+     public static int setspawnY(int i){
+        return spawnY = i;
+    }
+    
+    public static int getspawnY(){
+        return spawnY;
+    }
+    
+    public  int setplayerID(int i){
         return this.playerID = i;
     }
     
@@ -111,7 +130,7 @@ public class Astronaut extends Actor{
         //System.out.println("velocityY: " + velocityY);
         //System.out.println("xDif: " + xDif);
         //System.out.println("yDif: " + yDif);
-
+        
         setLocation((int)Math.round(x), (int)Math.round(y));
         collisions();
     }
@@ -129,6 +148,12 @@ public class Astronaut extends Actor{
             return true;
         }
         return false;
+    }
+    
+    //RESPAWN CODE THIS SETS THE LOCATION WHEN THE ASTRONATS DIE
+    public void respawn(){
+        x = getspawnX();
+        y = getspawnY();
     }
 
     public void collisions() {
