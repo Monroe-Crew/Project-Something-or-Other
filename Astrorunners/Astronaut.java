@@ -127,6 +127,8 @@ public class Astronaut extends Actor{
         x+=velocityX;
         y+=velocityY;
 
+        if(isTouching(BlackHole.class)){respawn();}
+
         //System.out.println("Distance: " + Distance);
         //System.out.println("Rotation: " + rotation);
         //System.out.println("velocityX: " + velocityX);
@@ -157,6 +159,8 @@ public class Astronaut extends Actor{
     public void respawn(){
         x = getspawnX();
         y = getspawnY();
+        velocityX = 0;
+        velocityY = 0;
     }
 
     public void collisions() {
