@@ -5,6 +5,7 @@ public class Round_End extends World
     private List<Astronaut> allPlayers;
     private int winner;
     private int round;
+    private int scoreTagOffset = 200;
     public Round_End(List<Astronaut> allPlayers, int winner, int round){    
         super(1280, 960, 1);
         this.winner = winner;
@@ -29,19 +30,23 @@ public class Round_End extends World
             int wins = allPlayers.get(i).getWins();
             if(playerID == 1){
                 PlayerScore playerOneScore = new PlayerScore("Player 1's Score is " + wins, 20);
-                addObject(playerOneScore, 640, 350);
+                addObject(playerOneScore, 840, scoreTagOffset);
+                scoreTagOffset += 50;
             }
             else if(playerID == 2){
                 PlayerScore playerTwoScore = new PlayerScore("Player 2's Score is " + wins, 20);
-                addObject(playerTwoScore, 640, 500);
+                addObject(playerTwoScore, 840, scoreTagOffset);
+                scoreTagOffset += 50;
             }
             else if(playerID == 3){
                 PlayerScore playerThreeScore = new PlayerScore("Player 3's Score is " + wins, 20);
-                addObject(playerThreeScore, 640, 650);
+                addObject(playerThreeScore, 840, scoreTagOffset);
+                scoreTagOffset += 50;
             }
             else if(playerID == 4){
                 PlayerScore playerFourScore = new PlayerScore("Player 4's Score is " + wins, 20);
-                addObject(playerFourScore, 640, 800);
+                addObject(playerFourScore, 840, scoreTagOffset);
+                scoreTagOffset += 50;
             }
         }
     }
