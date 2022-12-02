@@ -19,8 +19,6 @@ public class MainGame extends World{
 
     private void prepare(List<Integer> playersJoined){
         // Constructs stage
-        BlackHole blackHole = new BlackHole();
-        addObject(blackHole,602,411);
 
         int numPlayers = playersJoined.size();
 
@@ -57,9 +55,6 @@ public class MainGame extends World{
     }
 
     private void prepareOther(List<Astronaut> allPlayers){
-        BlackHole blackHole = new BlackHole();
-        addObject(blackHole,602,411);
-
         for(int i = 0; i < allPlayers.size(); i++){
             int playerID = allPlayers.get(i).getPlayerID();
             if(playerID == 1){
