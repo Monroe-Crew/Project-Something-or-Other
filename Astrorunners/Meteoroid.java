@@ -1,15 +1,22 @@
 import greenfoot.*;
 import java.util.*;
 public class Meteoroid extends Actor{ 
-    int rotation = 0;
-    int radius = 250;
+    private int rotation = 0;
+    private double speed;
+    private int radius;
+    private int pivotX, pivotY;
+    public Meteoroid(int radius, double speed, int pivotX, int pivotY){
+        this.radius = radius;
+        this.speed = speed;
+        this.pivotX = pivotX;
+        this.pivotY = pivotY;
+    }
+
     public void act() {
-       List<BlackHole> blackHoles = getObjectsInRange(2000, BlackHole.class);
-       int bX = blackHoles.get(0).getX();
-       int bY = blackHoles.get(0).getY();
-       setLocation(bX, bY);
-       setRotation(rotation);
-       move(radius);
-       rotation+=2;
+        setLocation(pivotX, pivotY);
+        setRotation((int)rotation);
+        move(radius);
+        rotation+=speed;
+        
     }    
 }
