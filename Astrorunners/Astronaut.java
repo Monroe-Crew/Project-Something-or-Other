@@ -91,7 +91,7 @@ public class Astronaut extends Actor{
             velocityX+=.1;
         }
 
-        List<BlackHole> blackholes = getObjectsInRange(2000, BlackHole.class);
+        List<BlackHole> blackholes = getObjectsInRange(500, BlackHole.class);
         List<Platforms> platforms = getObjectsInRange(100, Platforms.class);
         if(blackholes.size() > 0) {
             BlackHole b = blackholes.get(0);
