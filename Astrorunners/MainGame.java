@@ -20,7 +20,7 @@ public class MainGame extends World{
     private void prepare(List<Integer> playersJoined){
         // Constructs stage
         BlackHole blackHole = new BlackHole();
-        addObject(blackHole,602,411);
+        addObject(blackHole,640,480);
 
         int numPlayers = playersJoined.size();
 
@@ -51,6 +51,16 @@ public class MainGame extends World{
             addObject(blueStart,175,192);
             addObject(greenStart,175,384);
         }
+        
+        Platform1 platform1 = new Platform1();
+        addObject(platform1, 540, 480);
+        Platform1 platform2 = new Platform1();
+        addObject(platform2, 640, 380);
+        Platform1 platform3 = new Platform1();
+        addObject(platform3, 640, 580);
+        Platform1 platform4
+        = new Platform1();
+        addObject(platform3, 640, 580);
         
         Goal goal = new Goal(numPlayers, playersJoined, round);
         addObject(goal,1186,409);
