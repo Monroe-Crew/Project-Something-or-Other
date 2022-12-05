@@ -14,5 +14,6 @@ public class PlayerScore extends Actor
         GreenfootImage img = getImage();
         img.clear();
         img.drawString(text, 2, 20);
+        
     }
 }

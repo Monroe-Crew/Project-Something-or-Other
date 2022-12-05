@@ -135,7 +135,10 @@ public class Astronaut extends Actor{
         //System.out.println("velocityY: " + velocityY);
         //System.out.println("xDif: " + xDif);
         //System.out.println("yDif: " + yDif);
-
+        //score text creation
+        String score = "Player " + playerID + "Score:" + getWins();
+        //player score tracking implentation
+        //PlayerScore(score, 11);
         setLocation((int)Math.round(x), (int)Math.round(y));
         collisions();
     }
