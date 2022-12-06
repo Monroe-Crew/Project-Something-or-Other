@@ -78,19 +78,6 @@ public class Astronaut extends Actor{
     }
 
     public void act() {
-        if(Greenfoot.isKeyDown(controls[0])){
-            velocityY-=.15;
-        }
-        if(Greenfoot.isKeyDown(controls[1])){
-            velocityX-=.15;
-        }
-        if(Greenfoot.isKeyDown(controls[2])){
-            velocityY+=.15;
-        }
-        if(Greenfoot.isKeyDown(controls[3])){
-            velocityX+= .15;
-        }
-
         List<BlackHole> blackholes = getObjectsInRange(500, BlackHole.class);
         List<Platforms> platforms = getObjectsInRange(100, Platforms.class);
         if(blackholes.size() > 0) {
@@ -104,19 +91,34 @@ public class Astronaut extends Actor{
                 turnTowards(bx, by);
                 rotation = getRotation();
                 setRotation(getRotation()-90);
-                velocityX += 70*(Math.cos(Math.toRadians(rotation)) / Distance);
-                velocityY += 70*(Math.sin(Math.toRadians(rotation)) / Distance);
+                velocityX += 40*(Math.cos(Math.toRadians(rotation)) / Distance);
+                velocityY += 40*(Math.sin(Math.toRadians(rotation)) / Distance);
             }
-
-            if(Distance<15){
-                velocityX = 0;
-                velocityY = 0;
+            if(Greenfoot.isKeyDown(controls[0])&&feetOnGround()){
+                velocityY = -.15;
+                if(Distance<=15){
+                    velocityY-= Distance +(Distance-(Distance-3));
+                }
             }
+            /*if(Distance<15){
+            velocityX = 0;
+            velocityY = 0;
+            }
+             */
         }
 
-        if(Greenfoot.isKeyDown(controls[4]) && feetOnGround()) {
-            velocityY = 4 * Math.cos(Math.toRadians(platforms.get(0).getRotation())) * -1;
-            velocityX = 4 * Math.sin(Math.toRadians(platforms.get(0).getRotation()-180)) * -1;
+        if(Greenfoot.isKeyDown(controls[1])){
+            velocityX-=.15;
+        }
+        if(Greenfoot.isKeyDown(controls[2])){
+            velocityY+=.15;
+        }
+        if(Greenfoot.isKeyDown(controls[3])){
+            velocityX+= .15;
+        }
+        if(Greenfoot.isKeyDown(controls[4]) ) {
+            velocityY = 5 * Math.cos(Math.toRadians(platforms.get(0).getRotation())) * -1;
+            velocityX = 5 * Math.sin(Math.toRadians(platforms.get(0).getRotation()-180)) * -1;
         }
 
         if(velocityX>10){velocityX=10;}
@@ -164,7 +166,7 @@ public class Astronaut extends Actor{
         velocityX = 0;
         velocityY = 0;
     }
-    
+
     public boolean onScreen(int x, int y){
         if((x>1280 || x<0) || (y>960 || y<0)){
             return false;
