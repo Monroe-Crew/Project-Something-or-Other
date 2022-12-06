@@ -6,6 +6,7 @@ public class Meteoroid extends Actor{
     private int radius;
     private int pivotX, pivotY;
     public Meteoroid(int radius, double speed, int pivotX, int pivotY){
+        setImage("Comet.png");
         this.radius = radius;
         this.speed = speed;
         this.pivotX = pivotX;

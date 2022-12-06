@@ -15,22 +15,32 @@ public class Astronaut extends Actor{
         this.velocityX = 0;
         this.velocityY = 0;
         setplayerID(PlayerID);
-        if(PlayerID == 1){
+        
+        // Sets player control, spawnpoint, and image.
+        if(PlayerID == 1){ // Blue Astronaut
             controls = new String[]{"W","A","S","D","R"};
             spawnX = 125;
             spawnY = 192;
-        }else if(PlayerID == 2){
+            
+            setImage("Astronaut.png"); 
+        }else if(PlayerID == 2){ // Green Astronaut
             controls = new String[]{"I","J","K","L","O"};
             spawnX = 125;
             spawnY = 384;
-        }else if(PlayerID ==  3){
+            
+            setImage("Astronaut.png");
+        }else if(PlayerID ==  3){ // Pink Astronaut
             controls = new String[]{"UP","LEFT","DOWN","RIGHT","B"};
             spawnX = 125;
             spawnY = 576;
-        }else if(PlayerID == 4){
+            
+            setImage("Astronaut.png");
+        }else if(PlayerID == 4){ // Yellow Astronaut
             controls = new String[]{"5","1","2","3","9"};
             spawnX = 125;
             spawnY = 768;
+            
+            setImage("Astronaut.png");
         }
     }
 
