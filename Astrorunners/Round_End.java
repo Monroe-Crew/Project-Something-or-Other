@@ -21,6 +21,7 @@ public class Round_End extends World
     }
 
     public void prepare(){
+        setBackground("Main Background.png");
         PlayerScore winner = new PlayerScore("The Round Winner is: Player " + this.winner, 50);
         addObject(winner, 640, 100);
         Timer timer = new Timer(0,10,allPlayers,this.round);

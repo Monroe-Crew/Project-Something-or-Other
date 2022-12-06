@@ -8,6 +8,7 @@ public class EndScreen extends World{
         prepare();
     }
     public void prepare(){
+        setBackground("Main Background.png");
         Astronaut gameWinner = allPlayers.get(0);
         for(int i = 1; i < allPlayers.size(); i++){
             if(gameWinner.getWins() < allPlayers.get(i).getWins()){
@@ -17,5 +18,6 @@ public class EndScreen extends World{
         int gameWinnerPlayerID = gameWinner.getPlayerID();
         PlayerScore gameWinnerScore = new PlayerScore("Your Game Winner is: Player " + gameWinnerPlayerID, 50);
         addObject(gameWinnerScore, 640, 480);
+        setBackground("Main Background.png");
     }
 }
