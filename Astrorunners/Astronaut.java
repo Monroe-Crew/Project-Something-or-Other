@@ -79,16 +79,16 @@ public class Astronaut extends Actor{
 
     public void act() {
         if(Greenfoot.isKeyDown(controls[0])){
-            velocityY-=.1;
+            velocityY-=.15;
         }
         if(Greenfoot.isKeyDown(controls[1])){
-            velocityX-=.1;
+            velocityX-=.15;
         }
         if(Greenfoot.isKeyDown(controls[2])){
-            velocityY+=.1;
+            velocityY+=.15;
         }
         if(Greenfoot.isKeyDown(controls[3])){
-            velocityX+=.1;
+            velocityX+= .15;
         }
 
         List<BlackHole> blackholes = getObjectsInRange(500, BlackHole.class);
@@ -104,8 +104,8 @@ public class Astronaut extends Actor{
                 turnTowards(bx, by);
                 rotation = getRotation();
                 setRotation(getRotation()-90);
-                velocityX += 60*(Math.cos(Math.toRadians(rotation)) / Distance);
-                velocityY += 60*(Math.sin(Math.toRadians(rotation)) / Distance);
+                velocityX += 70*(Math.cos(Math.toRadians(rotation)) / Distance);
+                velocityY += 70*(Math.sin(Math.toRadians(rotation)) / Distance);
             }
 
             if(Distance<15){
@@ -127,8 +127,7 @@ public class Astronaut extends Actor{
         x+=velocityX;
         y+=velocityY;
 
-        if(isTouching(BlackHole.class)){respawn();}
-
+        if(isTouching(BlackHole.class)|| !onScreen(getX(),getY())){respawn();}
         //System.out.println("Distance: " + Distance);
         //System.out.println("Rotation: " + rotation);
         //System.out.println("velocityX: " + velocityX);
@@ -164,6 +163,13 @@ public class Astronaut extends Actor{
         y = getspawnY();
         velocityX = 0;
         velocityY = 0;
+    }
+    
+    public boolean onScreen(int x, int y){
+        if((x>1280 || x<0) || (y>960 || y<0)){
+            return false;
+        }
+        return true;
     }
 
     public void collisions() {
