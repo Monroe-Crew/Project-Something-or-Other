@@ -53,14 +53,19 @@ public class MainGame extends World{
         }
         
         Platform1 platform1 = new Platform1();
-        addObject(platform1, 540, 480);
+        addObject(platform1, 415, 480);
         Platform1 platform2 = new Platform1();
-        addObject(platform2, 640, 380);
+        addObject(platform2, 640, 255);
         Platform1 platform3 = new Platform1();
-        addObject(platform3, 640, 580);
-        Platform1 platform4
-        = new Platform1();
-        addObject(platform3, 640, 580);
+        addObject(platform3, 640, 705);
+        Platform1 platform4 = new Platform1();
+        addObject(platform4, 481, 321);
+        Platform1 platform5 = new Platform1();
+        addObject(platform5, 481, 639);
+        Platform1 platform6 = new Platform1();
+        addObject(platform6, 799, 321);
+        Platform1 platform7 = new Platform1();
+        addObject(platform7, 799, 639);
         
         Goal goal = new Goal(numPlayers, playersJoined, round);
         addObject(goal,1186,409);
