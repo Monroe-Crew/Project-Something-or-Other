@@ -4,7 +4,7 @@ public class MainGame extends World{
     private int round;
 
     public MainGame(List<Integer> playersJoined, int round){    
-        super(Constants.WIDTH, Constants.HEIGHT, 1); 
+        super(Constants.WIDTH, Constants.HEIGHT, 1, false); 
         round++;
         this.round = round;
         prepare(playersJoined);
@@ -14,7 +14,7 @@ public class MainGame extends World{
         super(Constants.WIDTH, Constants.HEIGHT, 1); 
         round++;
         this.round = round;
-        prepareOther(allPlayers);
+        altPrepare(allPlayers);
     }
 
     private void prepare(List<Integer> playersJoined){
@@ -67,11 +67,15 @@ public class MainGame extends World{
         Platform1 platform7 = new Platform1();
         addObject(platform7, 799, 639);
         
+        Meteoroid meteoroid = new Meteoroid(500, -2.5, 1520, 480, 3);
+        addObject(meteoroid, 1045, 480);
+        //(150,150);
+        
         Goal goal = new Goal(numPlayers, playersJoined, round);
-        addObject(goal,1186,409);
+        addObject(goal,1175,480);
     }
 
-    private void prepareOther(List<Astronaut> allPlayers){
+    private void altPrepare(List<Astronaut> allPlayers){ //takes in a list of the astronauts for after round updates.
         BlackHole blackHole = new BlackHole();
         addObject(blackHole,602,411);
 
