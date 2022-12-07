@@ -22,25 +22,25 @@ public class Astronaut extends Actor{
             spawnX = 125;
             spawnY = 192;
             
-            setImage("Astronaut.png"); 
+            setImage("Blue Astronaut.png"); 
         }else if(PlayerID == 2){ // Green Astronaut
-            controls = new String[]{"I","J","K","L","O"};
+            controls = new String[]{"T","F","G","H","U"};
             spawnX = 125;
             spawnY = 384;
             
-            setImage("Astronaut.png");
+            setImage("Blue Astronaut.png");
         }else if(PlayerID ==  3){ // Pink Astronaut
-            controls = new String[]{"UP","LEFT","DOWN","RIGHT","B"};
+            controls = new String[]{"I","J","K","L","U"};
             spawnX = 125;
             spawnY = 576;
             
-            setImage("Astronaut.png");
+            setImage("Blue Astronaut.png");
         }else if(PlayerID == 4){ // Yellow Astronaut
-            controls = new String[]{"5","1","2","3","9"};
+            controls = new String[]{"UP","LEFT","DOWN","RIGHT","8"};
             spawnX = 125;
             spawnY = 768;
             
-            setImage("Astronaut.png");
+            setImage("Blue Astronaut.png");
         }
     }
 
@@ -88,8 +88,8 @@ public class Astronaut extends Actor{
     }
 
     public void act() {
-        List<BlackHole> blackholes = getObjectsInRange(500, BlackHole.class);
-        List<Platforms> platforms = getObjectsInRange(100, Platforms.class);
+        List<BlackHole> blackholes = getObjectsInRange(2000, BlackHole.class);
+        List<Platforms> platforms = getObjectsInRange(500, Platforms.class);
         if(blackholes.size() > 0) {
             BlackHole b = blackholes.get(0);
             int bx = b.getX();
@@ -107,7 +107,7 @@ public class Astronaut extends Actor{
             if(Greenfoot.isKeyDown(controls[0])&&feetOnGround()){
                 velocityY = -.15;
                 if(Distance<=15){
-                    velocityY-= Distance +(Distance-(Distance-3));
+                     velocityY-= Distance +(Distance-(Distance-3));
                 }
             }
             /*if(Distance<15){
@@ -129,6 +129,7 @@ public class Astronaut extends Actor{
         if(Greenfoot.isKeyDown(controls[4]) ) {
             velocityY = 5 * Math.cos(Math.toRadians(platforms.get(0).getRotation())) * -1;
             velocityX = 5 * Math.sin(Math.toRadians(platforms.get(0).getRotation()-180)) * -1;
+            System.out.println(velocityY +" "+ velocityX);
         }
 
         if(velocityX>10){velocityX=10;}
