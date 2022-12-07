@@ -38,18 +38,18 @@ public class MainGame extends World{
             case 4: // Pink, Yellow
             addObject(pinkAstronaut,125,576);
             addObject(yellowAstronaut,125,768);
-            addObject(pinkStart,175,576);
-            addObject(yellowStart,175,768);
+            addObject(pinkStart,167,607);
+            addObject(yellowStart,216,725);
 
             case 3: // Pink
             addObject(pinkAstronaut,125,576);
-            addObject(pinkStart,175,576);
+            addObject(pinkStart,167,607);
 
             default: // Blue Green
             addObject(blueAstronaut,125,192);
             addObject(greenAstronaut,125,384);
-            addObject(blueStart,175,192);
-            addObject(greenStart,175,384);
+            addObject(blueStart,216,235);
+            addObject(greenStart,167,363);
         }
         
         Platform1 platform1 = new Platform1();
