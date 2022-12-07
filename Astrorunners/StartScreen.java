@@ -1,15 +1,13 @@
 import greenfoot.*;;
-public class Start_Screen extends World{
-    public Start_Screen(){    
-        super(1280, 720, 1); 
+public class StartScreen extends World{
+    public StartScreen(){    
+        super(1280, 960, 1); 
         prepare();
     }
     private void prepare()
-    {
-        setBackground("Start Screen(1).png");
-        
+    {        
         Start_Button startButton = new Start_Button();
-        addObject(startButton,608,595);
+        addObject(startButton,640,760);
         JoinAstronaut joinAstro1 = new JoinAstronaut(1);
         addObject(joinAstro1, 200, 480);
         JoinAstronaut joinAstro2 = new JoinAstronaut(2);
