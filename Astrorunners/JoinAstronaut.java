@@ -12,28 +12,28 @@ public class JoinAstronaut extends Actor{
     }
     public void act(){
         List<Start_Button> startbuttons = getObjectsInRange(2000, Start_Button.class);
-        if(Greenfoot.isKeyDown("F1") && !playerOneJoined  && playerID == 1){
+        if(Greenfoot.isKeyDown("1") && !playerOneJoined  && playerID == 1){
             joined = true;
             playerOneJoined = true;
             setImage("Blue Astronaut.png");
             startbuttons.get(0).playersJoined.add(this.playerID);
             System.out.println("Player One Joined");
         }
-        else if(Greenfoot.isKeyDown("F2") && !playerTwoJoined && playerID == 2){
+        else if(Greenfoot.isKeyDown("2") && !playerTwoJoined && playerID == 2){
             joined = true;
             playerTwoJoined = true;
             setImage("Blue Astronaut.png");
             startbuttons.get(0).playersJoined.add(this.playerID);
             System.out.println("Player Two Joined");
         }
-        else if(Greenfoot.isKeyDown("F3") && !playerThreeJoined && playerID == 3){
+        else if(Greenfoot.isKeyDown("3") && !playerThreeJoined && playerID == 3){
             joined = true;
             playerThreeJoined = true;
             setImage("Blue Astronaut.png");
             startbuttons.get(0).playersJoined.add(this.playerID);
             System.out.println("Player Three Joined");
         }
-        else if(Greenfoot.isKeyDown("F4") && !playerFourJoined && playerID == 4){
+        else if(Greenfoot.isKeyDown("4") && !playerFourJoined && playerID == 4){
             joined = true;
             playerFourJoined = true;
             setImage("Blue Astronaut.png");
