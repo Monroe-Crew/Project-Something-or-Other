@@ -10,6 +10,7 @@ public class Goal extends Platforms{
         this.playersJoined = playersJoined;
         this.round = round;
         System.out.println(round);
+        setImage("End Flag.png");
     }
     
     public void addedToWorld(World world){
