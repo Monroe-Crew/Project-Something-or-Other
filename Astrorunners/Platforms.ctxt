@@ -1,9 +1,0 @@
-#BlueJ class context
-comment0.target=Platforms
-comment1.params=world
-comment1.target=void\ addedToWorld(greenfoot.World)
-comment2.params=
-comment2.target=void\ act()
-comment3.params=pivotX\ pivotY\ pointX\ pointY\ rotation
-comment3.target=double[]\ pointRotation(double,\ double,\ double,\ double,\ int)
-numComments=4
