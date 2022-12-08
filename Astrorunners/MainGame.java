@@ -36,18 +36,16 @@ public class MainGame extends World{
 
         switch(numPlayers){
             case 4: // Pink, Yellow
-            addObject(pinkAstronaut,125,576);
-            addObject(yellowAstronaut,125,768);
-            addObject(pinkStart,167,607);
-            addObject(yellowStart,216,725);
+            addObject(yellowAstronaut,182,768);
+            addObject(yellowStart,216,744);
 
             case 3: // Pink
-            addObject(pinkAstronaut,125,576);
+            addObject(pinkAstronaut,119,620);
             addObject(pinkStart,167,607);
 
             default: // Blue Green
-            addObject(blueAstronaut,125,192);
-            addObject(greenAstronaut,125,384);
+            addObject(blueAstronaut,182,212);
+            addObject(greenAstronaut,119,340);
             addObject(blueStart,216,235);
             addObject(greenStart,167,363);
         }

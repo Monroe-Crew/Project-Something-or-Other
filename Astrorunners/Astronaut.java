@@ -111,7 +111,7 @@ public class Astronaut extends Actor{
             }
 
         }
-        if(Greenfoot.isKeyDown(controls[0])&&feetOnGround()){
+        if(Greenfoot.isKeyDown(controls[0]) && feetOnGround()){
             velocityY = -.15;
         }
         if(Greenfoot.isKeyDown(controls[1])){
