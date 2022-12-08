@@ -136,7 +136,14 @@ public class Astronaut extends Actor{
         x+=velocityX;
         y+=velocityY;
 
-        if(isTouching(BlackHole.class)|| !onScreen(getX(),getY())||isTouching(Meteoroid.class)){respawn();}
+        if(
+        isTouching(BlackHole.class)||
+        isTouching(Meteoroid.class)||
+        isTouching(Spikes.class)||
+        isTouching(Debris.class)||
+        !onScreen(getX(),getY())
+        )
+        {respawn();}
         //System.out.println("Distance: " + Distance);
         //System.out.println("Rotation: " + rotation);
         //System.out.println("velocityX: " + velocityX);
