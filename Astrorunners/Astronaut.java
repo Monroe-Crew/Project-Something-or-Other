@@ -28,19 +28,19 @@ public class Astronaut extends Actor{
             spawnX = 125;
             spawnY = 384;
 
-            setImage("Blue Astronaut.png");
+            setImage("Green Astronaut.png");
         }else if(PlayerID ==  3){ // Pink Astronaut
             controls = new String[]{"I","J","K","L","U"};
             spawnX = 125;
             spawnY = 576;
 
-            setImage("Blue Astronaut.png");
+            setImage("Pink Astronaut.png");
         }else if(PlayerID == 4){ // Yellow Astronaut
             controls = new String[]{"UP","LEFT","DOWN","RIGHT","8"};
             spawnX = 125;
             spawnY = 768;
 
-            setImage("Blue Astronaut.png");
+            setImage("Yellow Astronaut.png");
         }
     }
 
