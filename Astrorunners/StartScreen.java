@@ -6,6 +6,7 @@ public class StartScreen extends World{
     }
     private void prepare()
     {        
+        setBackground("StartScreen.jpg");
         Start_Button startButton = new Start_Button();
         addObject(startButton,640,760);
         JoinAstronaut joinAstro1 = new JoinAstronaut(1);
