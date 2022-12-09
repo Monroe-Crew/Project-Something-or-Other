@@ -40,7 +40,7 @@ public class MainGame extends World{
             addObject(yellowStart,216,744);
 
             case 3: // Pink
-            addObject(pinkAstronaut,119,620);
+            addObject(pinkAstronaut,105,630);
             addObject(pinkStart,167,607);
 
             default: // Blue Green
