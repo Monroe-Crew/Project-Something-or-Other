@@ -16,10 +16,6 @@ public class Astronaut extends Actor{
         this.velocityX = 0;
         this.velocityY = 0;
         setplayerID(PlayerID);
-
-        right=new GreenfootImage(getImage());
-        left=new GreenfootImage(getImage());
-        left.mirrorHorizontally();
         // Sets player control, spawnpoint, and image.
         if(PlayerID == 1){ // Blue Astronaut
             controls = new String[]{"W","A","D","R"};
@@ -27,24 +23,34 @@ public class Astronaut extends Actor{
             spawnY = 192;
 
             setImage("Blue Astronaut.png"); 
+            right=new GreenfootImage(getImage());
+            left=new GreenfootImage(getImage());
+            left.mirrorHorizontally();
         }else if(PlayerID == 2){ // Green Astronaut
             controls = new String[]{"T","F","H","U"};
             spawnX = 125;
             spawnY = 384;
 
             setImage("Green Astronaut.png");
+            right=new GreenfootImage(getImage());
+            left=new GreenfootImage(getImage());
+            left.mirrorHorizontally();
         }else if(PlayerID ==  3){ // Pink Astronaut
             controls = new String[]{"I","J","L","U"};
             spawnX = 125;
             spawnY = 576;
 
             setImage("Pink Astronaut.png");
+            right=new GreenfootImage(getImage());
         }else if(PlayerID == 4){ // Yellow Astronaut
             controls = new String[]{"UP","LEFT","RIGHT","8"};
             spawnX = 125;
             spawnY = 768;
 
             setImage("Yellow Astronaut.png");
+            right=new GreenfootImage(getImage());
+            left=new GreenfootImage(getImage());
+            left.mirrorHorizontally();
         }
     }
 
