@@ -1,7 +1,7 @@
 import greenfoot.*;
 import java.util.*;
 public class MovingPlatform extends Platforms{
-    private int rotation;
+    private double rotation;
     private double speed;
     private int radius;
     private int pivotX, pivotY;
@@ -13,7 +13,7 @@ public class MovingPlatform extends Platforms{
         this.pivotY = pivotY;
         this.rotation = rotation;
     }
-    
+
     public void addedToWorld(World world) {
         x = getX();
         y = getY();
@@ -24,9 +24,10 @@ public class MovingPlatform extends Platforms{
         setRotation((int)rotation);
         move(radius);
         rotation+=speed;
+        //System.out.println(rotation);
         faceBlackHole();
     }
-    
+
     private void faceBlackHole(){
         List<BlackHole> blackholes = getObjectsInRange(2000, BlackHole.class);
         int w = getImage().getWidth();

@@ -1,25 +1,25 @@
 import greenfoot.*;
 import java.util.*;
 public class Meteoroid extends Actor{ 
-    private int rotation = 0;
+    private double rotation = 0;
     private double speed;
     private int radius;
     private int pivotX, pivotY;
-    public Meteoroid(int radius, double speed, int pivotX, int pivotY, int scale){
+    public Meteoroid(int radius, double speed, int pivotX, int pivotY, double scale){
         this.radius = radius;
         this.speed = speed;
         this.pivotX = pivotX;
         this.pivotY = pivotY;
 
-        int width = getImage().getWidth() * scale;
-        int height = getImage().getHeight() * scale;
+        double width = getImage().getWidth() * scale;
+        double height = getImage().getHeight() * scale;
         
-        getImage().scale(width,height);
+        getImage().scale((int)width,(int)height);
     }
 
     public void act() {
         setLocation(pivotX, pivotY);
-        setRotation((int)rotation);
+        setRotation((int)rotation + 45);
         move(radius);
         rotation+=speed;
         
