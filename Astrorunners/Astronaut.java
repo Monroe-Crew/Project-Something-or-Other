@@ -111,17 +111,17 @@ public class Astronaut extends Actor{
                 turnTowards(bx, by);
                 rotation = getRotation();
                 setRotation(getRotation()-90);
-                //velocityX += 50*(Math.cos(Math.toRadians(rotation)) / Distance);
-                //velocityY += 50*(Math.sin(Math.toRadians(rotation)) / Distance);
-                velocityX += (Math.cos(Math.toRadians(rotation)) / (Math.log(Distance) / Math.log(2)));
-                velocityY += (Math.sin(Math.toRadians(rotation)) / (Math.log(Distance) / Math.log(2)));
+                velocityX += (Math.cos(Math.toRadians(rotation)) / ((Math.log(Distance) / Math.log(2)))*2);
+                velocityY += (Math.sin(Math.toRadians(rotation)) / ((Math.log(Distance) / Math.log(2)))*2);
             }
-
-            if(Distance<15){
-                velocityX = 0;
-                velocityY = 0;
-            }
-
+            if(
+            Distance<50||
+            isTouching(Meteoroid.class)||
+            isTouching(Spikes.class)||
+            isTouching(Debris.class)||
+            !onScreen(getX(),getY())
+            )
+            {respawn();}
         }
         if(Greenfoot.isKeyDown(controls[0])){
             velocityX -= (Math.cos(Math.toRadians(rotation)) / 5);
@@ -137,15 +137,6 @@ public class Astronaut extends Actor{
             velocityY += (Math.cos(Math.toRadians(rotation-180)) / 10);
             setImage(right);
         }
-        /*
-        if(Greenfoot.isKeyDown(controls[3])) {
-        velocityY += Math.sin(Math.toRadians(rotation-180));
-        velocityX -= Math.cos(Math.toRadians(rotation));
-        System.out.println("Y: " + Math.cos(Math.toRadians(rotation)));
-        System.out.println("X: " + Math.sin(Math.toRadians(rotation+90)));
-        System.out.println("Rotation: " + rotation);
-        }*/
-        //Reset Key
         if(Greenfoot.isKeyDown(controls[3])){
             respawn();
         }
@@ -157,21 +148,6 @@ public class Astronaut extends Actor{
 
         x+=velocityX;
         y+=velocityY;
-
-        if(
-        isTouching(BlackHole.class)||
-        isTouching(Meteoroid.class)||
-        isTouching(Spikes.class)||
-        isTouching(Debris.class)||
-        !onScreen(getX(),getY())
-        )
-        {respawn();}
-        //System.out.println("Distance: " + Distance);
-        //System.out.println("Rotation: " + rotation);
-        //System.out.println("velocityX: " + velocityX);
-        //System.out.println("velocityY: " + velocityY);
-        //System.out.println("xDif: " + xDif);
-        //System.out.println("yDif: " + yDif);
         //score text creation
         String score = "Player " + playerID + "Score:" + getWins();
         //player score tracking implentation
