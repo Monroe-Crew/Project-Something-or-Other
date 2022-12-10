@@ -27,7 +27,8 @@ public class CometGame extends World{
         Astronaut pinkAstronaut = new Astronaut(3);
         Astronaut yellowAstronaut = new Astronaut(4);
         
-        MovingPlatform platform1 = new MovingPlatform
+        MovingPlatform platform1 = new MovingPlatform(150, 1, 640, 480, 180);
+        addObject(platform1, 490, 480);
         
         switch(numPlayers){
             case 4: // Pink, Yellow
