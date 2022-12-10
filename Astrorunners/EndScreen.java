@@ -8,7 +8,7 @@ public class EndScreen extends World{
         prepare();
     }
     public void prepare(){
-        setBackground("Main Background.png");
+        setBackground("EndScreen.png");
         Astronaut gameWinner = allPlayers.get(0);
         for(int i = 1; i < allPlayers.size(); i++){
             if(gameWinner.getWins() < allPlayers.get(i).getWins()){
