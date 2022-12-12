@@ -139,6 +139,7 @@ public class Astronaut extends Actor{
             collisions();
         }
         else{
+            music.jumpMusic.setVolume(35); 
             if(Greenfoot.isKeyDown(controls[0])){
                 if(feetOnGround()){
                     music.jumpMusic.play(); 
@@ -156,15 +157,13 @@ public class Astronaut extends Actor{
             if(Greenfoot.isKeyDown(controls[3])){
                 velocityY = -10;
             }
+            if(!onScreen(getX(),getY())){
+                velocityY = -velocityY;
+                velocityX = -velocityX;
+            }
             velocityY +=.5;
             collisions2_Fuck_You_Alex();
         }
-        /*if(wDown != Greenfoot.isKeyDown(controls[0])){
-        wDown = !wDown;
-        if(wDown){
-        music.jumpMusic.play();  
-        }
-        } */
 
         if(velocityX>5){velocityX=5;}
         if(velocityY>5){velocityY=5;}
@@ -179,6 +178,7 @@ public class Astronaut extends Actor{
         //PlayerScore(score, 11);
         setLocation((int)Math.round(x), (int)Math.round(y));
     }
+    
 
     public boolean feetOnGround() {
         int w = getImage().getWidth();
@@ -196,7 +196,6 @@ public class Astronaut extends Actor{
     }
 
     //RESPAWN CODE THIS SETS THE LOCATION WHEN THE ASTRONATS DIE
-    //obviously dumbass >:(
     public void respawn(){
         boolean SoundPlayed = false;
         if(SoundPlayed == false){
