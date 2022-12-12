@@ -19,7 +19,9 @@ public class EndScreen extends World{
         }
         int gameWinnerPlayerID = gameWinner.getPlayerID();
         PlayerScore gameWinnerScore = new PlayerScore("Your Game Winner is: Player " + gameWinnerPlayerID, 50);
-        addObject(gameWinnerScore, 640, 480);
+        addObject(gameWinnerScore, 640, 380);
+        PlayerScore gameWinnerScore1 = new PlayerScore("Player 1 Press Start To Play Again!", 50);
+        addObject(gameWinnerScore, 640, 580);
         setBackground("Main Background.png");
     }
 }

@@ -6,19 +6,11 @@ public class Start_Button extends Actor
     public List<Integer> playersJoined = new ArrayList<Integer>();
     public static Music music; 
     public void act(){
-        if(Greenfoot.mouseClicked(this)){
+        if(Greenfoot.isKeyDown("1")  && playersJoined.size() > 1){
             System.out.println(playersJoined);
             music.stopAllMusic();
             Greenfoot.playSound("GameBegin.mp3");
-            if(playersJoined.size() > 1){
-                Greenfoot.setWorld(new MeteoroidGame(playersJoined, 0));
-            }
-            else{
-                Greenfoot.setWorld(new StartScreen());
-            }
+            Greenfoot.setWorld(new Controls(playersJoined));
         }
-    }
-    public List<Integer> getPlayersJoined(){
-        return this.playersJoined;
     }
 }

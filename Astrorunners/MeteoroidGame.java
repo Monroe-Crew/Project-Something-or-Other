@@ -96,7 +96,7 @@ public class MeteoroidGame extends World{
         addObject(meteoroid2, 0,0);
         Detector detect = new Detector(numPlayers, playersJoined, round);
         addObject(detect, 0, 0);
-        Meteoroid meteoroid3 = new Meteoroid(600, -2, 640, 480, 1.5);
+        Meteoroid meteoroid3 = new Meteoroid(550, -2, 640, 480, 1.5);
         addObject(meteoroid3, 0,0);
     }
     
@@ -184,7 +184,7 @@ public class MeteoroidGame extends World{
         addObject(meteoroid2, 0,0);
         Detector detect = new Detector(numPlayers, playersJoined, round);
         addObject(detect, 0, 0);
-        Meteoroid meteoroid3 = new Meteoroid(600, -2, 640, 480, 1.5);
+        Meteoroid meteoroid3 = new Meteoroid(550, -2, 640, 480, 1.5);
         addObject(meteoroid3, 0,0);
     }
 }
