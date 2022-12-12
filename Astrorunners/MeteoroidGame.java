@@ -171,7 +171,7 @@ public class MeteoroidGame extends World{
         
         Meteoroid meteoroid1 = new Meteoroid(262, -.25, 640, 480, 1.5);
         addObject(meteoroid1, 0,0);
-        Meteoroid meteoroid2 = new Meteoroid(437, .5, 640, 480, 1.5);
+        Meteoroid meteoroid2 = new Meteoroid(437, -.5, 640, 480, 1.5);
         addObject(meteoroid2, 0,0);
         Detector detect = new Detector(numPlayers, playersJoined, round);
         addObject(detect, 0, 0);
