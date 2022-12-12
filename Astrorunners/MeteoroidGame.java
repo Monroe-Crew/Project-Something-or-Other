@@ -23,50 +23,50 @@ public class MeteoroidGame extends World{
         
         int numPlayers = playersJoined.size();
 
-        Astronaut blueAstronaut = new Astronaut(1);
-        Astronaut greenAstronaut = new Astronaut(2);
-        Astronaut pinkAstronaut = new Astronaut(3);
-        Astronaut yellowAstronaut = new Astronaut(4);
+        Astronaut blueAstronaut = new Astronaut(1,2);
+        Astronaut greenAstronaut = new Astronaut(2,2);
+        Astronaut pinkAstronaut = new Astronaut(3,2);
+        Astronaut yellowAstronaut = new Astronaut(4,2);
         
-        MovingPlatform platform1 = new MovingPlatform(175, .5, 640, 480, 180);
+        MovingPlatform platform1 = new MovingPlatform(200, .5, 640, 480, 180);
         addObject(platform1, 490, 480);
-        MovingPlatform platform2 = new MovingPlatform(175, .5, 640, 480, 270);
+        MovingPlatform platform2 = new MovingPlatform(200, .5, 640, 480, 270);
         addObject(platform2, 640, 330);
-        MovingPlatform platform3 = new MovingPlatform(175, .5, 640, 480, 0);
+        MovingPlatform platform3 = new MovingPlatform(200, .5, 640, 480, 0);
         addObject(platform3, 790, 480);
-        MovingPlatform platform4 = new MovingPlatform(175, .5, 640, 480, 90);
+        MovingPlatform platform4 = new MovingPlatform(200, .5, 640, 480, 90);
         addObject(platform4, 640, 630);
-        MovingPlatform platform5 = new MovingPlatform(175, .5, 640, 480, 225);
+        MovingPlatform platform5 = new MovingPlatform(200, .5, 640, 480, 225);
         addObject(platform5, 490, 480);
-        MovingPlatform platform6 = new MovingPlatform(175, .5, 640, 480, 315);
+        MovingPlatform platform6 = new MovingPlatform(200, .5, 640, 480, 315);
         addObject(platform6, 640, 330);
-        MovingPlatform platform7 = new MovingPlatform(175, .5, 640, 480, 45);
+        MovingPlatform platform7 = new MovingPlatform(200, .5, 640, 480, 45);
         addObject(platform7, 790, 480);
-        MovingPlatform platform8 = new MovingPlatform(175, .5, 640, 480, 135);
+        MovingPlatform platform8 = new MovingPlatform(200, .5, 640, 480, 135);
         addObject(platform8, 640, 630);
-        MovingPlatform platform9 = new MovingPlatform(350, -.25, 640, 480, 180);
+        MovingPlatform platform9 = new MovingPlatform(400, -.25, 640, 480, 180);
         addObject(platform9, 490, 480);
-        MovingPlatform platform10 = new MovingPlatform(350, -.25, 640, 480, 270);
+        MovingPlatform platform10 = new MovingPlatform(400, -.25, 640, 480, 270);
         addObject(platform10, 640, 330);
-        MovingPlatform platform11 = new MovingPlatform(350, -.25, 640, 480, 0);
+        MovingPlatform platform11 = new MovingPlatform(400, -.25, 640, 480, 0);
         addObject(platform11, 790, 480);
-        MovingPlatform platform12 = new MovingPlatform(350, -.25, 640, 480, 90);
+        MovingPlatform platform12 = new MovingPlatform(400, -.25, 640, 480, 90);
         addObject(platform12, 640, 630);
-        MovingPlatform platform13 = new MovingPlatform(350, -.25, 640, 480, 210);
+        MovingPlatform platform13 = new MovingPlatform(400, -.25, 640, 480, 210);
         addObject(platform13, 490, 480);
-        MovingPlatform platform14 = new MovingPlatform(350, -.25, 640, 480, 240);
+        MovingPlatform platform14 = new MovingPlatform(400, -.25, 640, 480, 240);
         addObject(platform14, 640, 330);
-        MovingPlatform platform15 = new MovingPlatform(350, -.25, 640, 480, 300);
+        MovingPlatform platform15 = new MovingPlatform(400, -.25, 640, 480, 300);
         addObject(platform15, 790, 480);
-        MovingPlatform platform16 = new MovingPlatform(350, -.25, 640, 480, 330);
+        MovingPlatform platform16 = new MovingPlatform(400, -.25, 640, 480, 330);
         addObject(platform16, 640, 630);
-        MovingPlatform platform17 = new MovingPlatform(350, -.25, 640, 480, 30);
+        MovingPlatform platform17 = new MovingPlatform(400, -.25, 640, 480, 30);
         addObject(platform17, 490, 480);
-        MovingPlatform platform18 = new MovingPlatform(350, -.25, 640, 480, 60);
+        MovingPlatform platform18 = new MovingPlatform(400, -.25, 640, 480, 60);
         addObject(platform18, 640, 330);
-        MovingPlatform platform19 = new MovingPlatform(350, -.25, 640, 480, 120);
+        MovingPlatform platform19 = new MovingPlatform(400, -.25, 640, 480, 120);
         addObject(platform19, 790, 480);
-        MovingPlatform platform20 = new MovingPlatform(350, -.25, 640, 480, 150);
+        MovingPlatform platform20 = new MovingPlatform(400, -.25, 640, 480, 150);
         addObject(platform20, 640, 630);
         
         switch(numPlayers){
@@ -81,11 +81,16 @@ public class MeteoroidGame extends World{
             addObject(greenAstronaut,640,280);
         }
         
-        Meteoroid meteoroid1 = new Meteoroid(262, -.25, 640, 480, 1.5);
+        Meteoroid meteoroid1 = new Meteoroid(262, -2, 640, 480, 1.5);
         addObject(meteoroid1, 0,0);
-        Meteoroid meteoroid2 = new Meteoroid(437, .5, 640, 480, 1.5);
+        Meteoroid meteoroid2 = new Meteoroid(437, -3, 640, 480, 1.5);
         addObject(meteoroid2, 0,0);
+<<<<<<< HEAD
         Detector detect = new Detector(numPlayers, playersJoined, round);
+=======
+        Meteoroid meteoroid3 = new Meteoroid(600, -2, 640, 480, 1.5);
+        addObject(meteoroid3, 0,0);
+>>>>>>> 6367bc7367586dc0a52dfa9721753c09e8b5f062
     }
     
     private void altPrepare(List<Astronaut> allPlayers){

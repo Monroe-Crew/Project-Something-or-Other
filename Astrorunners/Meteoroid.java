@@ -10,10 +10,9 @@ public class Meteoroid extends Actor{
         this.speed = speed;
         this.pivotX = pivotX;
         this.pivotY = pivotY;
-
+        
         double width = getImage().getWidth() * scale;
         double height = getImage().getHeight() * scale;
-        
         getImage().scale((int)width,(int)height);
     }
 
