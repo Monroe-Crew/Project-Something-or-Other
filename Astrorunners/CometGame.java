@@ -4,7 +4,7 @@ public class CometGame extends World{
     private int round;
     public static Music music;
     private int frame = 0;
-    private int frequency = 300;
+    private int frequency = 30;
     Random rand = new Random();
     public CometGame(List<Integer> playersJoined, int round){    
         super(Constants.WIDTH, Constants.HEIGHT, 1, false); 

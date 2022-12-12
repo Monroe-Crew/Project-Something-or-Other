@@ -169,7 +169,7 @@ public class Astronaut extends Actor{
                 if(feetOnGround()){
                     music.jumpMusic.play(); 
                 }
-                velocityY = -100;
+                velocityY += -100;
             }
             velocityY =+5;
             collisions2();
