@@ -11,6 +11,7 @@ public class Astronaut extends Actor{
     private int playerID;
     private int wins;
     private boolean wDown;
+    private int walkAnimationTimer;
     //these two are for grabbing the respawn cords >:3
     private int spawnX;
     private int spawnY;
@@ -98,6 +99,7 @@ public class Astronaut extends Actor{
     }
 
     public void act() {
+        walkAnimationTimer=0;
         List<BlackHole> blackholes = getObjectsInRange(2000, BlackHole.class);
         List<Platforms> platforms = getObjectsInRange(500, Platforms.class);
         if(blackholes.size() > 0) {
@@ -133,12 +135,26 @@ public class Astronaut extends Actor{
             if(Greenfoot.isKeyDown(controls[1])){
                 velocityX -= (Math.sin(Math.toRadians(rotation)) / 10);
                 velocityY -= (Math.cos(Math.toRadians(rotation-180)) / 10);
+                if(walkAnimationTimer % 2==0){
+                    setImage(walk1);
+                }
+                else{
+                    setImage(walk2);
+                }
                 setImage(left);
+                walkAnimationTimer++;
             }
             if(Greenfoot.isKeyDown(controls[2])){
                 velocityX += (Math.sin(Math.toRadians(rotation)) / 10);
                 velocityY += (Math.cos(Math.toRadians(rotation-180)) / 10);
+                if(walkAnimationTimer % 2==0){
+                    setImage(walk1);
+                }
+                else{
+                    setImage(walk2);
+                }
                 setImage(right);
+                walkAnimationTimer++;
             }
             if(Greenfoot.isKeyDown(controls[3])){
                 respawn();
