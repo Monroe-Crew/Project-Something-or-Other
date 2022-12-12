@@ -3,6 +3,7 @@ import java.util.*;
 import java.lang.Math;
 public class Astronaut extends Actor{
     private GreenfootImage left,right;
+    private GreenfootImage walk1,walk2;
     private double velocityX, velocityY;
     private double x, y;
     private int rotation = 0;
@@ -10,10 +11,11 @@ public class Astronaut extends Actor{
     private int playerID;
     private int wins;
     private boolean wDown;
-    //these two are for grabbing the respawn cords :3
+    private int walkAnimationTimer;
+    //these two are for grabbing the respawn cords >:3
     private int spawnX;
     private int spawnY;
-    //this is for the music to work >_<
+    //this is for the music to work >_< emil is looser
     public static Music music;
     public Astronaut(int PlayerID){
         this.velocityX = 0;
@@ -29,6 +31,8 @@ public class Astronaut extends Actor{
             right=new GreenfootImage(getImage());
             left=new GreenfootImage(getImage());
             left.mirrorHorizontally();
+            walk1=new GreenfootImage("Blue Astronaut run1.png");
+            walk2=new GreenfootImage("Blue Astronaut run2.png");
         }else if(PlayerID == 2){ // Green Astronaut
             controls = new String[]{"T","F","H","U"};
             spawnX = 125;
@@ -38,6 +42,8 @@ public class Astronaut extends Actor{
             right=new GreenfootImage(getImage());
             left=new GreenfootImage(getImage());
             left.mirrorHorizontally();
+            walk1=new GreenfootImage("Green Astronaut run1.png");
+            walk2=new GreenfootImage("Green Astronaut run2.png");
         }else if(PlayerID ==  3){ // Pink Astronaut
             controls = new String[]{"I","J","L","U"};
             spawnX = 125;
@@ -45,6 +51,8 @@ public class Astronaut extends Actor{
 
             setImage("Pink Astronaut.png");
             right=new GreenfootImage(getImage());
+            left=new GreenfootImage(getImage());
+            left.mirrorHorizontally();
         }else if(PlayerID == 4){ // Yellow Astronaut
             controls = new String[]{"UP","LEFT","RIGHT","8"};
             spawnX = 125;
@@ -91,6 +99,7 @@ public class Astronaut extends Actor{
     }
 
     public void act() {
+        walkAnimationTimer=0;
         List<BlackHole> blackholes = getObjectsInRange(2000, BlackHole.class);
         List<Platforms> platforms = getObjectsInRange(500, Platforms.class);
         if(blackholes.size() > 0) {
@@ -126,12 +135,26 @@ public class Astronaut extends Actor{
             if(Greenfoot.isKeyDown(controls[1])){
                 velocityX -= (Math.sin(Math.toRadians(rotation)) / 10);
                 velocityY -= (Math.cos(Math.toRadians(rotation-180)) / 10);
+                if(walkAnimationTimer % 2==0){
+                    setImage(walk1);
+                }
+                else{
+                    setImage(walk2);
+                }
                 setImage(left);
+                walkAnimationTimer++;
             }
             if(Greenfoot.isKeyDown(controls[2])){
                 velocityX += (Math.sin(Math.toRadians(rotation)) / 10);
                 velocityY += (Math.cos(Math.toRadians(rotation-180)) / 10);
+                if(walkAnimationTimer % 2==0){
+                    setImage(walk1);
+                }
+                else{
+                    setImage(walk2);
+                }
                 setImage(right);
+                walkAnimationTimer++;
             }
             if(Greenfoot.isKeyDown(controls[3])){
                 respawn();
@@ -139,7 +162,6 @@ public class Astronaut extends Actor{
             collisions();
         }
         else{
-            music.jumpMusic.setVolume(35); 
             if(Greenfoot.isKeyDown(controls[0])){
                 if(feetOnGround()){
                     music.jumpMusic.play(); 
@@ -148,6 +170,7 @@ public class Astronaut extends Actor{
             }
             if(Greenfoot.isKeyDown(controls[1])){
                 velocityX -=.1;
+                
                 setImage(left);
             }
             if(Greenfoot.isKeyDown(controls[2])){
@@ -157,13 +180,15 @@ public class Astronaut extends Actor{
             if(Greenfoot.isKeyDown(controls[3])){
                 velocityY = -10;
             }
-            if(!onScreen(getX(),getY())){
-                velocityY = -velocityY;
-                velocityX = -velocityX;
-            }
             velocityY +=.5;
             collisions2_Fuck_You_Alex();
         }
+        /*if(wDown != Greenfoot.isKeyDown(controls[0])){
+        wDown = !wDown;
+        if(wDown){
+        music.jumpMusic.play();  LOL
+        }
+        } */
 
         if(velocityX>5){velocityX=5;}
         if(velocityY>5){velocityY=5;}
@@ -172,13 +197,12 @@ public class Astronaut extends Actor{
 
         x+=velocityX;
         y+=velocityY;
-        //score text creation
+        //score text creation caden gets no bithces
         String score = "Player " + playerID + "Score:" + getWins();
-        //player score tracking implentation
-        //PlayerScore(score, 11);
+        //player score tracking implentation; implemetnt this dick pls >:D
+        //PlayerScore(score, 11); LOLOLOL
         setLocation((int)Math.round(x), (int)Math.round(y));
     }
-    
 
     public boolean feetOnGround() {
         int w = getImage().getWidth();
@@ -196,6 +220,7 @@ public class Astronaut extends Actor{
     }
 
     //RESPAWN CODE THIS SETS THE LOCATION WHEN THE ASTRONATS DIE
+    //obviously dumbass >:(
     public void respawn(){
         boolean SoundPlayed = false;
         if(SoundPlayed == false){
@@ -218,7 +243,7 @@ public class Astronaut extends Actor{
 
     public void collisions() {
         List<BlackHole> blackholes = getObjectsInRange(2000, BlackHole.class);
-        //BlackHole b = blackholes.get(0);
+        //BlackHole b = blackholes.get(0); 
         int w = getImage().getWidth();
         int h = getImage().getHeight();
         double[] BLA = pointRotation(x,y,x-w/4,y+h/2,rotation);
