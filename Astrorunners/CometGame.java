@@ -28,10 +28,10 @@ public class CometGame extends World{
         
         setPaintOrder(Ground.class, Comet.class);
 
-        Astronaut blueAstronaut = new Astronaut(1);
-        Astronaut greenAstronaut = new Astronaut(2);
-        Astronaut pinkAstronaut = new Astronaut(3);
-        Astronaut yellowAstronaut = new Astronaut(4);
+        Astronaut blueAstronaut = new Astronaut(1,1);
+        Astronaut greenAstronaut = new Astronaut(2,1);
+        Astronaut pinkAstronaut = new Astronaut(3,1);
+        Astronaut yellowAstronaut = new Astronaut(4,1);
         
         switch(numPlayers){
             case 4: // Pink, Yellow

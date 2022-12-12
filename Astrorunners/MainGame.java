@@ -24,10 +24,10 @@ public class MainGame extends World{
         music.gameMusic.playLoop(); 
         int numPlayers = playersJoined.size();
 
-        Astronaut blueAstronaut = new Astronaut(1);
-        Astronaut greenAstronaut = new Astronaut(2);
-        Astronaut pinkAstronaut = new Astronaut(3);
-        Astronaut yellowAstronaut = new Astronaut(4);
+        Astronaut blueAstronaut = new Astronaut(1,0);
+        Astronaut greenAstronaut = new Astronaut(2,0);
+        Astronaut pinkAstronaut = new Astronaut(3,0);
+        Astronaut yellowAstronaut = new Astronaut(4,0);
 
         Platform2 pinkStart = new Platform2();
         Platform2 yellowStart = new Platform2();

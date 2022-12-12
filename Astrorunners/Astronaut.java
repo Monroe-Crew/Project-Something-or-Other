@@ -3,6 +3,8 @@ import java.util.*;
 import java.lang.Math;
 public class Astronaut extends Actor{
     private GreenfootImage left,right;
+    private int gameID;
+    private boolean haveJump;
     private boolean isRight = true;
     private GreenfootImage walk1,walk2,walk1Left,walk2Left;
     private boolean walkImage = true;
@@ -18,10 +20,11 @@ public class Astronaut extends Actor{
     private int spawnY;
     //this is for the music to work >_< emil is looser
     public static Music music;
-    public Astronaut(int PlayerID){
+    public Astronaut(int PlayerID,int gameID){
         this.velocityX = 0;
         this.velocityY = 0;
         setplayerID(PlayerID);
+        setGameID(gameID);
         // Sets player control, spawnpoint, and image.
         if(PlayerID == 1){ // Blue Astronaut
             controls = new String[]{"W","A","D","R"};
@@ -90,6 +93,10 @@ public class Astronaut extends Actor{
         return this.playerID = i;
     }
 
+    public int setGameID(int i){
+        return this.gameID = i;
+    }
+
     public int getPlayerID(){
         return this.playerID;
     }
@@ -118,6 +125,9 @@ public class Astronaut extends Actor{
             double xDif = bx - x;
             double yDif = by - y;
             double Distance = Math.sqrt(Math.pow(xDif,2)+Math.pow(yDif,2));
+            if(feetOnGround()){
+                haveJump=true;
+            }
             if(!feetOnGround()){
                 turnTowards(bx, by);
                 rotation = getRotation();
@@ -132,7 +142,7 @@ public class Astronaut extends Actor{
             !onScreen(getX(),getY())
             )
             {respawn();}
-
+            
             music.jumpMusic.setVolume(35); 
             if(Greenfoot.isKeyDown(controls[0])){
                 if(feetOnGround()){
@@ -151,8 +161,18 @@ public class Astronaut extends Actor{
                 velocityY += (Math.cos(Math.toRadians(rotation-180)) / 10);
                 setImage(right);
             }
-            if(Greenfoot.isKeyDown(controls[3])){
-                respawn();
+            if(gameID==0){
+                if(Greenfoot.isKeyDown(controls[3])){
+                    respawn();
+                }
+            }
+            if(gameID==2 && Greenfoot.isKeyDown(controls[3]) && haveJump){
+                if(feetOnGround()){
+                    music.jumpMusic.play(); 
+                }
+                haveJump=false;
+                velocityX = Math.cos(Math.toRadians(rotation))*-20;
+                velocityY = Math.sin(Math.toRadians(rotation))*-20;
             }
             collisions();
         }
