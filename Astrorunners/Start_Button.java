@@ -11,7 +11,7 @@ public class Start_Button extends Actor
             music.stopAllMusic();
             Greenfoot.playSound("GameBegin.mp3");
             if(playersJoined.size() > 1){
-                Greenfoot.setWorld(new CometGame(playersJoined,0));
+                Greenfoot.setWorld(new Controls(playersJoined));
             }
             else{
                 Greenfoot.setWorld(new StartScreen());

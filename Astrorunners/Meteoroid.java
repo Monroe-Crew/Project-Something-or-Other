@@ -1,7 +1,7 @@
 import greenfoot.*;
 import java.util.*;
 public class Meteoroid extends Actor{ 
-    private double rotation = 0;
+    private double rotation = 45;
     private double speed;
     private int radius;
     private int pivotX, pivotY;

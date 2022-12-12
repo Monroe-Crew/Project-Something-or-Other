@@ -23,9 +23,6 @@ public class CometGame extends World{
     private void prepare(List<Integer> playersJoined){
         int numPlayers = playersJoined.size();
         
-        Ground ground = new Ground(numPlayers, playersJoined, round);
-        addObject(ground, 640, 900);
-        
         setPaintOrder(Ground.class, Comet.class);
 
         Astronaut blueAstronaut = new Astronaut(1,1);
@@ -44,6 +41,9 @@ public class CometGame extends World{
             addObject(blueAstronaut,240,816);
             addObject(greenAstronaut,440,816);
         }
+        
+        Ground ground = new Ground(numPlayers, playersJoined, round);
+        addObject(ground, 640, 900);
     }
     
     private void altPrepare(List<Astronaut> allPlayers){

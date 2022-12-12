@@ -71,14 +71,14 @@ public class MeteoroidGame extends World{
         
         switch(numPlayers){
             case 4: // Pink, Yellow
-            addObject(yellowAstronaut,640,680);
+            addObject(yellowAstronaut,640,604);
 
             case 3: // Pink
-            addObject(pinkAstronaut,840,480);
+            addObject(pinkAstronaut,864,480);
 
             default: // Blue Green
-            addObject(blueAstronaut,440,480);
-            addObject(greenAstronaut,640,280);
+            addObject(blueAstronaut,416,480);
+            addObject(greenAstronaut,640,256);
         }
         
         Meteoroid meteoroid1 = new Meteoroid(262, -2, 640, 480, 1.5);

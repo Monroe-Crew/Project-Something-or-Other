@@ -24,7 +24,7 @@ public class Astronaut extends Actor{
         this.velocityX = 0;
         this.velocityY = 0;
         setplayerID(PlayerID);
-        setGameID(gameID);
+        this.gameID = gameID;
         // Sets player control, spawnpoint, and image.
         if(PlayerID == 1){ // Blue Astronaut
             controls = new String[]{"W","A","D","R"};
@@ -89,10 +89,10 @@ public class Astronaut extends Actor{
         return spawnY;
     }
 
-    public int setplayerID(int i){
-        return this.playerID = i;
+    public void setplayerID(int i){
+        this.playerID = i;
     }
-    
+
     public int getGameID(){
         return this.gameID;
     }
@@ -119,6 +119,7 @@ public class Astronaut extends Actor{
     }
 
     public void act() {
+        if (getWorld() == null) return;
         timer++;
         List<BlackHole> blackholes = getObjectsInRange(2000, BlackHole.class);
         List<Platforms> platforms = getObjectsInRange(500, Platforms.class);
@@ -139,14 +140,12 @@ public class Astronaut extends Actor{
                 velocityX += (Math.cos(Math.toRadians(rotation)) / ((Math.log(Distance) / Math.log(2)))*2);
                 velocityY += (Math.sin(Math.toRadians(rotation)) / ((Math.log(Distance) / Math.log(2)))*2);
             }
-            if(
-            Distance<50||
-            isTouching(Meteoroid.class)||
-            isTouching(Comet.class)||
-            !onScreen(getX(),getY())
-            )
-            {respawn();}
-            
+            if((Distance<50|| isTouching(Meteoroid.class) || isTouching(Comet.class)|| !onScreen(getX(),getY())) && gameID == 0){
+                respawn();
+            }
+            else if(isTouching(Meteoroid.class) || Distance < 50){
+                getWorld().removeObject(this);
+            }
             music.jumpMusic.setVolume(35); 
             if(Greenfoot.isKeyDown(controls[0])){
                 if(feetOnGround()){
@@ -196,6 +195,7 @@ public class Astronaut extends Actor{
                 velocityY += -100;
             }
             velocityY =+5;
+            collisions2();
         }
         if(velocityX>5){velocityX=5;}
         if(velocityY>5){velocityY=5;}
