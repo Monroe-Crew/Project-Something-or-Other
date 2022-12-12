@@ -5,9 +5,16 @@ public class Comet extends Actor{
     private double speed;
     private double velocityX, velocityY;
     private double x, y;
-    public Comet(int angle, double speed){
+    public Comet(int angle, double speed, double scale){
         this.angle = angle;
         this.speed = speed;
+        
+        setRotation(angle + 90);
+        
+        double width = getImage().getWidth() * scale;
+        double height = getImage().getHeight() * scale;
+        
+        getImage().scale((int)width,(int)height);
     }
 
     public void addedToWorld(World world) {
@@ -18,10 +25,9 @@ public class Comet extends Actor{
     public void act(){
         velocityX += speed * Math.cos(Math.toRadians(angle));
         velocityY += speed * Math.sin(Math.toRadians(angle));
-        System.out.println(velocityX + " " + velocityY);
         x += velocityX;
         y += velocityY;
-        System.out.println(x + " " + y);
         setLocation((int)Math.round(x), (int)Math.round(y));
+        removeTouching(Astronaut.class);
     }
 }

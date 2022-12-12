@@ -124,6 +124,6 @@ public class MainGame extends World{
         addObject(meteoroid, 1045, 480);
         
         Goal goal = new Goal(allPlayers.size(), playersJoined, round);
-        addObject(goal,1186,409);
+        addObject(goal,1175,480);
     }
 }
