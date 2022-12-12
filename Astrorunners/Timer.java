@@ -7,6 +7,8 @@ public class Timer extends Actor{
     GreenfootImage image;
     private List<Astronaut> allPlayers;
     private int round;
+    Random rand = new Random();
+    
     public Timer(int m, int s, List<Astronaut> allPlayers, int round) {
         seconds=s;
         minutes=m;
@@ -34,7 +36,14 @@ public class Timer extends Actor{
             s+=seconds;
         }
         if(minutes==-1){
-            Greenfoot.setWorld((new MainGame(this.round, allPlayers)));
+            switch(rand.nextInt(3)){
+                case 2:
+                    Greenfoot.setWorld(new MeteoroidGame(round, allPlayers));
+                case 1:
+                    Greenfoot.setWorld(new CometGame(round, allPlayers));
+                default:
+                    Greenfoot.setWorld(new MainGame(round, allPlayers));
+            }
         }
         image.drawString(s, 5, 100);
         setImage(image);
