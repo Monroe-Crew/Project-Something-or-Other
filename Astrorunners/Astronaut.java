@@ -65,6 +65,12 @@ public class Astronaut extends Actor{
             right=new GreenfootImage(getImage());
             left=new GreenfootImage(getImage());
             left.mirrorHorizontally();
+            walk1=new GreenfootImage("Pink Astronaut run1.png");
+            walk2=new GreenfootImage("Pink Astronaut run2.png");
+            walk1Left=new GreenfootImage(walk1);
+            walk1Left.mirrorHorizontally();
+            walk2Left=new GreenfootImage(walk2);
+            walk2Left.mirrorHorizontally();
         }else if(PlayerID == 4){ // Yellow Astronaut
             controls = new String[]{"UP","LEFT","RIGHT","8"};
             spawnX = 125;
@@ -74,6 +80,12 @@ public class Astronaut extends Actor{
             right=new GreenfootImage(getImage());
             left=new GreenfootImage(getImage());
             left.mirrorHorizontally();
+            walk1=new GreenfootImage("Yellow Astronaut run1.png");
+            walk2=new GreenfootImage("Yellow Astronaut run2.png");
+            walk1Left=new GreenfootImage(walk1);
+            walk1Left.mirrorHorizontally();
+            walk2Left=new GreenfootImage(walk2);
+            walk2Left.mirrorHorizontally();
         }
     }
 
