@@ -154,12 +154,12 @@ public class Astronaut extends Actor{
             if(Greenfoot.isKeyDown(controls[1])){
                 velocityX -= (Math.sin(Math.toRadians(rotation)) / 10);
                 velocityY -= (Math.cos(Math.toRadians(rotation-180)) / 10);
-                setImage(left);
+                walkAnimation(false);
             }
             if(Greenfoot.isKeyDown(controls[2])){
                 velocityX += (Math.sin(Math.toRadians(rotation)) / 10);
                 velocityY += (Math.cos(Math.toRadians(rotation-180)) / 10);
-                setImage(right);
+                walkAnimation(true);
             }
             if(gameID==0){
                 if(Greenfoot.isKeyDown(controls[3])){
@@ -176,7 +176,7 @@ public class Astronaut extends Actor{
             }
             collisions();
         }
-        else{
+        if(gameID==1){
             if(Greenfoot.isKeyDown(controls[1])){
                 x -=5;
                 walkAnimation(false);
