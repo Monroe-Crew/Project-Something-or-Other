@@ -152,12 +152,6 @@ public class Astronaut extends Actor{
                 velocityX += (Math.cos(Math.toRadians(rotation)) / ((Math.log(Distance) / Math.log(2)))*2);
                 velocityY += (Math.sin(Math.toRadians(rotation)) / ((Math.log(Distance) / Math.log(2)))*2);
             }
-            if((Distance<50|| isTouching(Meteoroid.class) || isTouching(Comet.class)|| !onScreen(getX(),getY())) && gameID == 0){
-                respawn();
-            }
-            else if(isTouching(Meteoroid.class) || Distance < 50){
-                getWorld().removeObject(this);
-            }
             music.jumpMusic.setVolume(35); 
             if(Greenfoot.isKeyDown(controls[0])){
                 if(feetOnGround()){
@@ -190,6 +184,12 @@ public class Astronaut extends Actor{
                 velocityY = Math.sin(Math.toRadians(rotation))*-20;
             }
             collisions();
+            if((Distance<50|| isTouching(Meteoroid.class) || isTouching(Comet.class)|| !onScreen(getX(),getY())) && gameID == 0){
+                respawn();
+            }
+            else if(isTouching(Meteoroid.class) || Distance < 50){
+                getWorld().removeObject(this);
+            }
         }
         if(gameID==1){
             if(Greenfoot.isKeyDown(controls[1])){
