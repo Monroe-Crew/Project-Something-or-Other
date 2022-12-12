@@ -69,16 +69,25 @@ public class MeteoroidGame extends World{
         MovingPlatform platform20 = new MovingPlatform(400, -.25, 640, 480, 150);
         addObject(platform20, 640, 630);
         
+        Platform2 pinkStart = new Platform2();
+        Platform2 yellowStart = new Platform2();
+        Platform2 blueStart = new Platform2();
+        Platform2 greenStart = new Platform2();
+
         switch(numPlayers){
             case 4: // Pink, Yellow
-            addObject(yellowAstronaut,640,604);
+            addObject(yellowAstronaut,182,768);
+            addObject(yellowStart,216,744);
 
             case 3: // Pink
-            addObject(pinkAstronaut,864,480);
+            addObject(pinkAstronaut,105,630);
+            addObject(pinkStart,167,607);
 
             default: // Blue Green
-            addObject(blueAstronaut,416,480);
-            addObject(greenAstronaut,640,256);
+            addObject(blueAstronaut,182,212);
+            addObject(greenAstronaut,119,340);
+            addObject(blueStart,216,235);
+            addObject(greenStart,167,363);
         }
         
         Meteoroid meteoroid1 = new Meteoroid(262, -2, 640, 480, 1.5);
