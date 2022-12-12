@@ -172,7 +172,6 @@ public class Astronaut extends Actor{
                 velocityY = -100;
             }
             velocityY =+5;
-            collisions2();
         }
         if(velocityX>5){velocityX=5;}
         if(velocityY>5){velocityY=5;}

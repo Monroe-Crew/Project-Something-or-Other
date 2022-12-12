@@ -39,8 +39,10 @@ public class Timer extends Actor{
             switch(rand.nextInt(3)){
                 case 2:
                     Greenfoot.setWorld(new MeteoroidGame(round, allPlayers));
+                    break;
                 case 1:
                     Greenfoot.setWorld(new CometGame(round, allPlayers));
+                    break;
                 default:
                     Greenfoot.setWorld(new MainGame(round, allPlayers));
             }
