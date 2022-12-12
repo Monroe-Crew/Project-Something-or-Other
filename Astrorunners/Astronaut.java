@@ -92,6 +92,10 @@ public class Astronaut extends Actor{
     public int setplayerID(int i){
         return this.playerID = i;
     }
+    
+    public int getGameID(){
+        return this.gameID;
+    }
 
     public int setGameID(int i){
         return this.gameID = i;
@@ -192,7 +196,6 @@ public class Astronaut extends Actor{
                 velocityY += -100;
             }
             velocityY =+5;
-            collisions2();
         }
         if(velocityX>5){velocityX=5;}
         if(velocityY>5){velocityY=5;}

@@ -38,10 +38,21 @@ public class Timer extends Actor{
         if(minutes==-1){
             switch(rand.nextInt(3)){
                 case 2:
+                    for(int i = 0; i < allPlayers.size(); i++){
+                        allPlayers.get(i).setGameID(2);
+                    }
                     Greenfoot.setWorld(new MeteoroidGame(round, allPlayers));
+                    break;
                 case 1:
+                    for(int i = 0; i < allPlayers.size(); i++){
+                        allPlayers.get(i).setGameID(2);
+                    }
                     Greenfoot.setWorld(new CometGame(round, allPlayers));
+                    break;
                 default:
+                    for(int i = 0; i < allPlayers.size(); i++){
+                        allPlayers.get(i).setGameID(2);
+                    }
                     Greenfoot.setWorld(new MainGame(round, allPlayers));
             }
         }

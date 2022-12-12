@@ -48,20 +48,24 @@ public class CometGame extends World{
     
     private void altPrepare(List<Astronaut> allPlayers){
         int numPlayers = allPlayers.size();
-        
+        setPaintOrder(Ground.class, Comet.class);
         music.gameMusic.playLoop(); 
         for(int i = 0; i < allPlayers.size(); i++){
             int playerID = allPlayers.get(i).getPlayerID();
             if(playerID == 1){
+                allPlayers.get(i).setRotation(0);
                 addObject(allPlayers.get(i),240,816);
             }
             else if(playerID == 2){
+                allPlayers.get(i).setRotation(0);
                 addObject(allPlayers.get(i),440,816);
             }
             else if(playerID == 3){
+                allPlayers.get(i).setRotation(0);
                 addObject(allPlayers.get(i),840,816);
             }
             else if(playerID == 4){
+                allPlayers.get(i).setRotation(0);
                 addObject(allPlayers.get(i),1040,816);
             }
         }
