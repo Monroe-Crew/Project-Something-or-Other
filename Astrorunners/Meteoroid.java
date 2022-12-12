@@ -19,9 +19,8 @@ public class Meteoroid extends Actor{
 
     public void act() {
         setLocation(pivotX, pivotY);
-        setRotation((int)rotation + 45);
+        setRotation((int)rotation);
         move(radius);
         rotation+=speed;
-        
     }    
 }

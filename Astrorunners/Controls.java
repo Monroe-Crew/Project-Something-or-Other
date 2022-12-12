@@ -16,12 +16,14 @@ public class Controls extends World
 
     public void act(){
         frame++;
-        if(frame == 3600){
+        if(frame == 300){
             switch(rand.nextInt(3)){
                 case 2:
                     Greenfoot.setWorld(new MeteoroidGame(players, 0));
+                    break;
                 case 1:
                     Greenfoot.setWorld(new CometGame(players, 0));
+                    break;
                 default:
                     Greenfoot.setWorld(new MainGame(players, 0));
             }
