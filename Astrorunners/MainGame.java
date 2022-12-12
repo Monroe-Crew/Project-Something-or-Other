@@ -2,7 +2,7 @@ import greenfoot.*;
 import java.util.*;;
 public class MainGame extends World{
     private int round;
-
+    public static Music music;
     public MainGame(List<Integer> playersJoined, int round){    
         super(Constants.WIDTH, Constants.HEIGHT, 1, false); 
         round++;
@@ -21,7 +21,7 @@ public class MainGame extends World{
         // Constructs stage
         BlackHole blackHole = new BlackHole();
         addObject(blackHole,640,480);
-
+        music.gameMusic.playLoop(); 
         int numPlayers = playersJoined.size();
 
         Astronaut blueAstronaut = new Astronaut(1);
@@ -76,7 +76,7 @@ public class MainGame extends World{
     private void altPrepare(List<Astronaut> allPlayers){ //takes in a list of the astronauts for after round updates.
         BlackHole blackHole = new BlackHole();
         addObject(blackHole,640,480);
-
+        music.gameMusic.playLoop(); 
         for(int i = 0; i < allPlayers.size(); i++){
             int playerID = allPlayers.get(i).getPlayerID();
             if(playerID == 1){

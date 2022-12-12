@@ -1,7 +1,9 @@
 import greenfoot.*;
 public class StartScreen extends World{
+    public static Music music;
     public StartScreen(){    
         super(1280, 960, 1); 
+        music = new Music();
         prepare();
     }
     private void prepare()
@@ -17,5 +19,7 @@ public class StartScreen extends World{
         addObject(joinAstro3, 880, 480);
         JoinAstronaut joinAstro4 = new JoinAstronaut(4);
         addObject(joinAstro4, 1080, 480);
+        Music.MenuMusic.setVolume(75);
+        Music.MenuMusic.playLoop();
     }
 }

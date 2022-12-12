@@ -2,6 +2,7 @@ import greenfoot.*;
 import java.util.*;
 public class CometGame extends World{
     private int round;
+    public static Music music; 
     public CometGame(List<Integer> playersJoined, int round){    
         super(Constants.WIDTH, Constants.HEIGHT, 1, false); 
         round++;
@@ -19,7 +20,7 @@ public class CometGame extends World{
     private void prepare(List<Integer> playersJoined){
         BlackHole blackHole = new BlackHole();
         addObject(blackHole, 640, 480);
-        
+        Music.gameMusic.playLoop(); 
         int numPlayers = playersJoined.size();
 
         Astronaut blueAstronaut = new Astronaut(1);
