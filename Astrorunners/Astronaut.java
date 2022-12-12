@@ -9,9 +9,12 @@ public class Astronaut extends Actor{
     private String[] controls;
     private int playerID;
     private int wins;
+    private boolean wDown;
     //these two are for grabbing the respawn cords :3
     private int spawnX;
     private int spawnY;
+    //this is for the music to work >_<
+    public static Music music;
     public Astronaut(int PlayerID){
         this.velocityX = 0;
         this.velocityY = 0;
@@ -112,7 +115,11 @@ public class Astronaut extends Actor{
             )
             {respawn();}
         }
+        music.jumpMusic.setVolume(35); 
         if(Greenfoot.isKeyDown(controls[0])){
+            if(feetOnGround()){
+                music.jumpMusic.play(); 
+            }
             velocityX -= (Math.cos(Math.toRadians(rotation)) / 5);
             velocityY -= (Math.sin(Math.toRadians(rotation)) / 5);
         }
@@ -129,6 +136,12 @@ public class Astronaut extends Actor{
         if(Greenfoot.isKeyDown(controls[3])){
             respawn();
         }
+        /*if(wDown != Greenfoot.isKeyDown(controls[0])){
+            wDown = !wDown;
+            if(wDown){
+                music.jumpMusic.play();  
+            }
+        } */
 
         if(velocityX>5){velocityX=5;}
         if(velocityY>5){velocityY=5;}
@@ -163,10 +176,16 @@ public class Astronaut extends Actor{
     //RESPAWN CODE THIS SETS THE LOCATION WHEN THE ASTRONATS DIE
     //obviously dumbass >:(
     public void respawn(){
+        boolean SoundPlayed = false;
+        if(SoundPlayed == false){
+            music.DeathSFX.play();
+            SoundPlayed = true;
+        }
         x = getspawnX();
         y = getspawnY();
         velocityX = 0;
         velocityY = 0;
+        SoundPlayed = false;
     }
 
     public boolean onScreen(int x, int y){

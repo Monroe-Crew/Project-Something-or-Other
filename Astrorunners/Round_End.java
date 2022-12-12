@@ -6,6 +6,7 @@ public class Round_End extends World
     private int winner;
     private int round;
     private int scoreTagOffset = 200;
+    public static Music music;
     public Round_End(List<Astronaut> allPlayers, int winner, int round){    
         super(1280, 960, 1);
         this.winner = winner;
@@ -21,6 +22,7 @@ public class Round_End extends World
     }
 
     public void prepare(){
+        music.stopAllMusic(); 
         setBackground("Main Background.png");
         PlayerScore winner = new PlayerScore("The Round Winner is: Player " + this.winner, 50);
         addObject(winner, 640, 100);

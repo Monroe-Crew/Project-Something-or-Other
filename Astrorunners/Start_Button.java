@@ -4,12 +4,14 @@ import java.util.ArrayList;
 public class Start_Button extends Actor
 {
     public List<Integer> playersJoined = new ArrayList<Integer>();
+    public static Music music; 
     public void act(){
         if(Greenfoot.mouseClicked(this)){
             System.out.println(playersJoined);
+            music.stopAllMusic();
             Greenfoot.playSound("GameBegin.mp3");
             if(playersJoined.size() > 1){
-                Greenfoot.setWorld(new CometGame(playersJoined, 0));
+                Greenfoot.setWorld(new MainGame(playersJoined, 0));
             }
             else{
                 Greenfoot.setWorld(new StartScreen());
