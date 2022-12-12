@@ -20,8 +20,10 @@ public class Controls extends World
             switch(rand.nextInt(3)){
                 case 2:
                     Greenfoot.setWorld(new MeteoroidGame(players, 0));
+                    break;
                 case 1:
                     Greenfoot.setWorld(new CometGame(players, 0));
+                    break;
                 default:
                     Greenfoot.setWorld(new MainGame(players, 0));
             }
